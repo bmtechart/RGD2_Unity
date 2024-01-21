@@ -43,6 +43,27 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnGrabLeft(InputValue value)
+		{
+			Debug.Log("GrabLeft");
+		}
+
+		public void OnGrabRight(InputValue value)
+		{
+			Debug.Log("GrabRight");
+		}
+
+		public void OnDrop(InputValue value)
+		{
+
+		}
+
+		public void OnThrow(InputValue value)
+		{
+			Debug.Log("ThrowSuccessful");
+		}
+
 #endif
 
 
