@@ -8,9 +8,7 @@ public enum HandState
 {
     Empty,
     HoldingLight,
-    HoldingHeavy,
-    ThrowingLight,
-    ThrowingHeavy
+    HoldingHeavy
 }
 
 public class FoodInteractionController : MonoBehaviour
@@ -26,9 +24,19 @@ public class FoodInteractionController : MonoBehaviour
     private FoodObject _rightHandFoodObject;
     private FoodObject _dualHandFoodObject;
 
+    private float _leftHandThrowCharge;
+    private float _rightHandThrowCharge;
+    private float _dualHandThrowCharge;
+
     [Header("Pick-Up")]
-    [SerializeField] public float PickUpDistance = 2.0f;
-    [SerializeField] public float SingleHandMassLimit = 5.0f;
+    [SerializeField][Range(0.0f, 10.0f)] public float PickUpDistance = 2.0f;
+    [SerializeField][Range(0.0f, 500.0f)] public float SingleHandMassLimit = 5.0f;
+
+    [Header("Throw")]
+    [SerializeField][Range(0.0f, 90.0f)] public float ThrowAngle = 30.0f;
+    [SerializeField][Range(0.001f, 30.0f)] public float TimeToFullCharge = 5.0f;
+    [SerializeField][Range(0.0f, 1000.0f)] public float MaxSingleHandForce = 50.0f;
+    [SerializeField][Range(0.0f, 1000.0f)] public float MaxDualHandForce = 100.0f;
 
     [Header("Held Food Positions")]
     [SerializeField] public Vector3 LeftHandObjectPosition = new Vector3(-0.5f, -0.5f, 1.0f);
@@ -50,12 +58,147 @@ public class FoodInteractionController : MonoBehaviour
         //init hand states
         _leftHandState = HandState.Empty;
         _rightHandState = HandState.Empty;
+
+        //init throw charges
+        _leftHandThrowCharge = 0.0f;
+        _rightHandThrowCharge = 0.0f;
+        _dualHandThrowCharge = 0.0f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //throw held food objects
-        //TODO: throw held food objects
+        ThrowFoodObjects();
+    }
+
+    private void ThrowFoodObjects()
+    {
+        if (_leftHandState == HandState.Empty)
+        {
+
+        }
+
+        //left hand charge throw
+        if (_leftHandState == HandState.HoldingLight)
+        {
+            bool isCharging = false;
+
+            //check input for charge throw
+            foreach (ButtonControl buttonControl in _leftHandInputAction.controls)
+            {
+                if (buttonControl.isPressed)
+                {
+                    isCharging = true;
+                }
+            }
+
+            if (isCharging)
+            {
+                //charge throw
+                _leftHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
+
+                //clamp charge at max
+                if (_leftHandThrowCharge > 1.0f)
+                {
+                    _leftHandThrowCharge = 1.0f;
+                }
+            }
+            else if (_leftHandThrowCharge > 0.0f)
+            {
+                //throw
+                LeftHandThrow();
+            }
+            //else just hold
+        }
+
+        //right hand charge throw
+        if (_rightHandState == HandState.HoldingLight)
+        {
+            
+        }
+
+        //dual hand charge throw
+        if (_leftHandState == HandState.HoldingHeavy && _rightHandState == HandState.HoldingHeavy)
+        {
+            
+        }
+    }
+
+    private void LeftHandPickUp(FoodObject food)
+    {
+        Debug.Log("food object picked up with left hand");
+        //assign
+        _leftHandFoodObject = food;
+        
+        //disable physics
+        food.HoldObject();
+
+        //position
+        food.transform.SetParent(Camera.main.transform);
+        food.transform.localPosition = LeftHandObjectPosition;
+
+        //change hand state
+        _leftHandState = HandState.HoldingLight;
+    }
+
+    private void RightHandPickUp(FoodObject food)
+    {
+        Debug.Log("food object picked up with right hand");
+        //assign
+        _rightHandFoodObject = food;
+
+        //disable physics
+        food.HoldObject();
+
+        //position
+        food.transform.SetParent(Camera.main.transform);
+        food.transform.localPosition = RightHandObjectPosition;
+
+        //change hand state
+        _rightHandState = HandState.HoldingLight;
+    }
+
+    private void DualHandPickUp(FoodObject food)
+    {
+        Debug.Log("food object picked up with both hands");
+        //assign
+        _dualHandFoodObject = food;
+
+        //disable physics
+        food.HoldObject();
+
+        //position
+        food.transform.SetParent(Camera.main.transform);
+        food.transform.localPosition = DualHandObjectPosition;
+
+        //change hand state
+        _leftHandState = HandState.HoldingHeavy;
+        _rightHandState = HandState.HoldingHeavy;
+    }
+
+    private void LeftHandThrow()
+    {
+        if (_leftHandFoodObject != null)
+        {
+            Debug.Log("food object thrown with left hand");
+            //unparent
+            _leftHandFoodObject.transform.SetParent(null);
+
+            //enable physics
+            _leftHandFoodObject.DropObject();
+
+            //apply force
+            _leftHandFoodObject.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * _leftHandThrowCharge * MaxSingleHandForce);
+
+            //reset charge
+            _leftHandThrowCharge = 0.0f;
+
+            //change hand state
+            _leftHandState = HandState.HoldingLight;
+
+            //remove reference
+            _leftHandFoodObject = null;
+        }
     }
 
     public void EnableFoodInteraction()
@@ -84,13 +227,7 @@ public class FoodInteractionController : MonoBehaviour
                     if (food.GetComponent<Rigidbody>().mass <= SingleHandMassLimit)
                     {
                         //pick up light food
-                        food.HoldObject();
-                        food.transform.SetParent(Camera.main.transform);
-                        food.transform.localPosition = LeftHandObjectPosition;
-                        Debug.Log("food object picked up with left hand");
-
-                        //change hand state
-                        _leftHandState = HandState.HoldingLight;
+                        LeftHandPickUp(food);
                     }
                     else
                     {
@@ -100,11 +237,7 @@ public class FoodInteractionController : MonoBehaviour
                             if (buttonControl.isPressed && _rightHandState == HandState.Empty)
                             {
                                 //pick up heavy food
-                                //TODO: pick up heavy food
-
-                                //change hand states
-                                _leftHandState = HandState.HoldingHeavy;
-                                _rightHandState = HandState.HoldingHeavy;
+                                DualHandPickUp(food);
                             }
                         }
 
@@ -136,13 +269,7 @@ public class FoodInteractionController : MonoBehaviour
                     if (food.GetComponent<Rigidbody>().mass <= SingleHandMassLimit)
                     {
                         //pick up light food
-                        food.HoldObject();
-                        food.transform.SetParent(Camera.main.transform);
-                        food.transform.localPosition = RightHandObjectPosition;
-                        Debug.Log("food object picked up with right hand");
-
-                        //change hand state
-                        _rightHandState = HandState.HoldingLight;
+                        RightHandPickUp(food);
                     }
                     else
                     {
@@ -152,11 +279,7 @@ public class FoodInteractionController : MonoBehaviour
                             if (buttonControl.isPressed && _leftHandState == HandState.Empty)
                             {
                                 //pick up heavy food
-                                //TODO: pick up heavy food
-
-                                //change hand states
-                                _rightHandState = HandState.HoldingHeavy;
-                                _leftHandState = HandState.HoldingHeavy;
+                                DualHandPickUp(food);
                             }
                         }
 
