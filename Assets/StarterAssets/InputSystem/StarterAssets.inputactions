@@ -40,42 +40,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "GrabLeft",
-                    "type": "Button",
-                    "id": "fec1c40b-1022-4350-b0f7-0c41de1a39f7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GrabRight",
-                    "type": "Button",
-                    "id": "e9a13757-bc47-47bf-882d-391d61280cb8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Drop",
-                    "type": "Button",
-                    "id": "2096ffc9-cf63-4cc7-956e-0d4fa9618792",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Throw",
-                    "type": "Button",
-                    "id": "ffe29f96-7362-429f-af6e-2892f46dcfe6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -254,48 +218,96 @@
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "FoodInteraction",
+            "id": "1ac68786-86db-4383-96cd-8498a474fc6d",
+            "actions": [
+                {
+                    "name": "LeftHand",
+                    "type": "Value",
+                    "id": "8e854118-8646-440e-8f46-03f237ad0d31",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
+                    "name": "RightHand",
+                    "type": "Value",
+                    "id": "032fcbbb-ba06-4b05-87ac-6fa42e32aab8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
                     "name": "",
-                    "id": "81cdf897-e7cb-4cc7-a177-3f7777543d54",
+                    "id": "7f9ad9f2-e600-4abb-8159-864767433c10",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GrabLeft",
+                    "action": "LeftHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "024ad0a9-2a17-4539-a6ce-964c8752502c",
-                    "path": "<Keyboard>/g",
+                    "id": "31ac379b-1405-4611-ba89-6c63275761b0",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Drop",
+                    "action": "LeftHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8d903c30-962b-4ea9-9b59-1f9009e1f7f7",
-                    "path": "<Keyboard>/e",
+                    "id": "5afbf62f-f016-433e-b07c-17d6819b813c",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
+                    "action": "LeftHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "4649b750-83c9-4532-bd9c-ba2742a10baa",
+                    "id": "eb82277f-1e00-4d83-888e-5353d3261987",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GrabRight",
+                    "action": "RightHand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64febe77-9eeb-441f-afaa-23c5d7cbd8b8",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4118d779-046e-4e05-8683-3ab4783e69e3",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
