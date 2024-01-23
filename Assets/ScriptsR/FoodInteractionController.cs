@@ -7,6 +7,8 @@ using UnityEngine.InputSystem.Controls;
 public enum HandState
 {
     Empty,
+    LiftingLight,
+    LiftingHeavy,
     HoldingLight,
     HoldingHeavy
 }
@@ -29,14 +31,14 @@ public class FoodInteractionController : MonoBehaviour
     private float _dualHandThrowCharge;
 
     [Header("Pick-Up")]
-    [SerializeField][Range(0.0f, 10.0f)] public float PickUpDistance = 2.0f;
-    [SerializeField][Range(0.0f, 500.0f)] public float SingleHandMassLimit = 5.0f;
+    [SerializeField, Range(0.0f, 10.0f)] public float PickUpDistance = 2.0f;
+    [SerializeField, Range(0.0f, 500.0f)] public float SingleHandMassLimit = 5.0f;
 
     [Header("Throw")]
-    [SerializeField][Range(0.0f, 90.0f)] public float ThrowAngle = 30.0f;
-    [SerializeField][Range(0.001f, 30.0f)] public float TimeToFullCharge = 5.0f;
-    [SerializeField][Range(0.0f, 1000.0f)] public float MaxSingleHandForce = 50.0f;
-    [SerializeField][Range(0.0f, 1000.0f)] public float MaxDualHandForce = 100.0f;
+    [SerializeField, Range(0.0f, 90.0f)] public float ThrowAngle = 30.0f;
+    [SerializeField, Range(0.001f, 30.0f)] public float TimeToFullCharge = 5.0f;
+    [SerializeField, Range(0.0f, 100000.0f)] public float MaxSingleHandForce = 5000.0f;
+    [SerializeField, Range(0.0f, 100000.0f)] public float MaxDualHandForce = 10000.0f;
 
     [Header("Held Food Positions")]
     [SerializeField] public Vector3 LeftHandObjectPosition = new Vector3(-0.5f, -0.5f, 1.0f);
@@ -73,11 +75,6 @@ public class FoodInteractionController : MonoBehaviour
 
     private void ThrowFoodObjects()
     {
-        if (_leftHandState == HandState.Empty)
-        {
-
-        }
-
         //left hand charge throw
         if (_leftHandState == HandState.HoldingLight)
         {
@@ -110,17 +107,124 @@ public class FoodInteractionController : MonoBehaviour
             }
             //else just hold
         }
+        else if (_leftHandState == HandState.LiftingLight)
+        {
+            //don't allow throw until finished lifting (button release)
+            foreach (ButtonControl buttonControl in _leftHandInputAction.controls)
+            {
+                if (!buttonControl.isPressed)
+                {
+                    _leftHandState = HandState.HoldingLight;
+                }
+            }
+        }
 
         //right hand charge throw
         if (_rightHandState == HandState.HoldingLight)
         {
-            
+            bool isCharging = false;
+
+            //check input for charge throw
+            foreach (ButtonControl buttonControl in _rightHandInputAction.controls)
+            {
+                if (buttonControl.isPressed)
+                {
+                    isCharging = true;
+                }
+            }
+
+            if (isCharging)
+            {
+                //charge throw
+                _rightHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
+
+                //clamp charge at max
+                if (_rightHandThrowCharge > 1.0f)
+                {
+                    _rightHandThrowCharge = 1.0f;
+                }
+            }
+            else if (_rightHandThrowCharge > 0.0f)
+            {
+                //throw
+                RightHandThrow();
+            }
+            //else just hold
+        }
+        else if (_rightHandState == HandState.LiftingLight)
+        {
+            //don't allow throw until finished lifting (button release)
+            foreach (ButtonControl buttonControl in _rightHandInputAction.controls)
+            {
+                if (!buttonControl.isPressed)
+                {
+                    _rightHandState = HandState.HoldingLight;
+                }
+            }
         }
 
         //dual hand charge throw
         if (_leftHandState == HandState.HoldingHeavy && _rightHandState == HandState.HoldingHeavy)
         {
-            
+            bool isCharging = false;
+
+            //check input for charge throw
+            foreach (ButtonControl buttonControl in _leftHandInputAction.controls)
+            {
+                if (buttonControl.isPressed)
+                {
+                    isCharging = true;
+                }
+            }
+            foreach (ButtonControl buttonControl in _rightHandInputAction.controls)
+            {
+                if (buttonControl.isPressed)
+                {
+                    isCharging = true;
+                }
+            }
+
+            if (isCharging)
+            {
+                //charge throw
+                _dualHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
+
+                //clamp charge at max
+                if (_dualHandThrowCharge > 1.0f)
+                {
+                    _dualHandThrowCharge = 1.0f;
+                }
+            }
+            else if (_dualHandThrowCharge > 0.0f)
+            {
+                //throw
+                DualHandThrow();
+            }
+            //else just hold
+        }
+        else
+        {
+            //don't allow throw until finished lifting (buttons release)
+            if (_leftHandState == HandState.LiftingHeavy)
+            {
+                foreach (ButtonControl buttonControl in _leftHandInputAction.controls)
+                {
+                    if (!buttonControl.isPressed)
+                    {
+                        _leftHandState = HandState.HoldingHeavy;
+                    }
+                }
+            }
+            if (_rightHandState == HandState.LiftingHeavy)
+            {
+                foreach (ButtonControl buttonControl in _rightHandInputAction.controls)
+                {
+                    if (!buttonControl.isPressed)
+                    {
+                        _rightHandState = HandState.HoldingHeavy;
+                    }
+                }
+            }
         }
     }
 
@@ -138,7 +242,7 @@ public class FoodInteractionController : MonoBehaviour
         food.transform.localPosition = LeftHandObjectPosition;
 
         //change hand state
-        _leftHandState = HandState.HoldingLight;
+        _leftHandState = HandState.LiftingLight;
     }
 
     private void RightHandPickUp(FoodObject food)
@@ -155,7 +259,7 @@ public class FoodInteractionController : MonoBehaviour
         food.transform.localPosition = RightHandObjectPosition;
 
         //change hand state
-        _rightHandState = HandState.HoldingLight;
+        _rightHandState = HandState.LiftingLight;
     }
 
     private void DualHandPickUp(FoodObject food)
@@ -172,8 +276,8 @@ public class FoodInteractionController : MonoBehaviour
         food.transform.localPosition = DualHandObjectPosition;
 
         //change hand state
-        _leftHandState = HandState.HoldingHeavy;
-        _rightHandState = HandState.HoldingHeavy;
+        _leftHandState = HandState.LiftingHeavy;
+        _rightHandState = HandState.LiftingHeavy;
     }
 
     private void LeftHandThrow()
@@ -187,17 +291,68 @@ public class FoodInteractionController : MonoBehaviour
             //enable physics
             _leftHandFoodObject.DropObject();
 
-            //apply force
-            _leftHandFoodObject.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * _leftHandThrowCharge * MaxSingleHandForce);
+            //apply force with random torque
+            _leftHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * _leftHandThrowCharge * MaxSingleHandForce, _leftHandFoodObject.transform.position + Random.insideUnitSphere * _leftHandFoodObject.ObjectCoreRadius);
 
             //reset charge
             _leftHandThrowCharge = 0.0f;
 
             //change hand state
-            _leftHandState = HandState.HoldingLight;
+            _leftHandState = HandState.Empty;
 
             //remove reference
             _leftHandFoodObject = null;
+        }
+    }
+
+    private void RightHandThrow()
+    {
+        if (_rightHandFoodObject != null)
+        {
+            Debug.Log("food object thrown with right hand");
+            //unparent
+            _rightHandFoodObject.transform.SetParent(null);
+
+            //enable physics
+            _rightHandFoodObject.DropObject();
+
+            //apply force with random torque
+            _rightHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * _rightHandThrowCharge * MaxSingleHandForce, _rightHandFoodObject.transform.position + Random.insideUnitSphere * _rightHandFoodObject.ObjectCoreRadius);
+
+            //reset charge
+            _rightHandThrowCharge = 0.0f;
+
+            //change hand state
+            _rightHandState = HandState.Empty;
+
+            //remove reference
+            _rightHandFoodObject = null;
+        }
+    }
+
+    private void DualHandThrow()
+    {
+        if (_dualHandFoodObject != null)
+        {
+            Debug.Log("food object thrown with both hands");
+            //unparent
+            _dualHandFoodObject.transform.SetParent(null);
+
+            //enable physics
+            _dualHandFoodObject.DropObject();
+
+            //apply force with random torque
+            _dualHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * _dualHandThrowCharge * MaxSingleHandForce, _dualHandFoodObject.transform.position + Random.insideUnitSphere * _dualHandFoodObject.ObjectCoreRadius);
+
+            //reset charge
+            _dualHandThrowCharge = 0.0f;
+
+            //change hand state
+            _leftHandState = HandState.Empty;
+            _rightHandState = HandState.Empty;
+
+            //remove reference
+            _dualHandFoodObject = null;
         }
     }
 
