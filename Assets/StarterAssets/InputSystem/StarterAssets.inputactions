@@ -227,7 +227,7 @@
             "actions": [
                 {
                     "name": "LeftHand",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "8e854118-8646-440e-8f46-03f237ad0d31",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -236,7 +236,7 @@
                 },
                 {
                     "name": "RightHand",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "032fcbbb-ba06-4b05-87ac-6fa42e32aab8",
                     "expectedControlType": "Button",
                     "processors": "",
