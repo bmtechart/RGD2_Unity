@@ -429,11 +429,9 @@ MonoBehaviour:
   PickUpDistance: 2
   SingleHandMassLimit: 5
   ThrowAngle: 30
-  TimeToFullCharge: 5
-  MaxSingleHandForce: 50
-  MaxDualHandForce: 100
-  isThrowingLeft: 0
-  isThrowingRight: 0
+  TimeToFullCharge: 10
+  MaxSingleHandForce: 10000
+  MaxDualHandForce: 20000
   LeftHandObjectPosition: {x: -0.5, y: -0.5, z: 1}
-  RightHandObjectPosition: {x: 0, y: -0.5, z: 1}
-  DualHandObjectPosition: {x: 0.5, y: -0.5, z: 1}
+  RightHandObjectPosition: {x: 0.5, y: -0.5, z: 1}
+  DualHandObjectPosition: {x: 0, y: -0.5, z: 1}
