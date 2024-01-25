@@ -2713,7 +2713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StandardMass: 1
-  DragCoefficient: 0.47
+  DragCoefficient: 0.1
   MaxVelocity: 20
   ObjectCoreRadius: 0.25
 --- !u!54 &1573367573
@@ -2725,8 +2725,8 @@ Rigidbody:
   m_GameObject: {fileID: 1573367571}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0.47
-  m_AngularDrag: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2750,7 +2750,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573367571}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d51c5bab94544b0459f591e483d9c2cd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2823,7 +2823,7 @@ Transform:
   m_GameObject: {fileID: 1573367571}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.25, z: 5}
+  m_LocalPosition: {x: -2, y: 2.44, z: 5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []

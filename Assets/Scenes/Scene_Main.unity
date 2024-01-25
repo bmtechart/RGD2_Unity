@@ -10588,9 +10588,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 560753015562569831, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
+      propertyPath: DragCoefficient
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2231323542125112989, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
       propertyPath: m_Name
       value: TestFood
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231323542125112989, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
+      propertyPath: m_TagString
+      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 5803255384287001536, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
       propertyPath: m_Material
@@ -14552,6 +14560,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &286847366 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 668755745302615794, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+  m_PrefabInstance: {fileID: 467861339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &333758548
 GameObject:
   m_ObjectHideFlags: 0
@@ -31261,6 +31274,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 192568017695288249, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 312889089412911731, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 1414074405990078512, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
       propertyPath: m_Name
       value: PF_RagdollCharacter
@@ -31305,10 +31326,451 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1644558821690573137, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644558821690573137, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644558821690573137, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644558821690573137, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644558821690573137, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644558821690573137, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644558821690573137, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularZMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYLimit.limit
+      value: 166.46432
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularZLimit.limit
+      value: 112.15487
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_LowAngularXLimit.limit
+      value: -177
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_HighAngularXLimit.limit
+      value: 81.00862
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966189871588593941, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularZMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893602732419737709, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125008889130186063, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911657607753470285, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularZMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171367262757032301, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346656251449140348, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346656251449140348, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1e+14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346656251449140348, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1e+12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346656251449140348, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1e+13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346656251449140348, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 1e+9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346656251449140348, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 1e+9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346656251449140348, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 1e+11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268978304395351727, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268978304395351727, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268978304395351727, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268978304395351727, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268978304395351727, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268978304395351727, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268978304395351727, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularZMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283130333316893881, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078932401330918450, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492016603578691021, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492016603578691021, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492016603578691021, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492016603578691021, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492016603578691021, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492016603578691021, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492016603578691021, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 930949937}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularZMotion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.00000035352426
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.30157658
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000035017732
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559417261712080962, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769009247202218525, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769009247202218525, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769009247202218525, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769009247202218525, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769009247202218525, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769009247202218525, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769009247202218525, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945609509867194014, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945609509867194014, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6767fa1dd090fd34d80bbb87d30c4d10, type: 2}
+    - target: {fileID: 8070436308383102199, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137928485335320099, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_RotationDriveMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137928485335320099, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137928485335320099, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137928485335320099, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137928485335320099, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_SlerpDrive.positionSpring
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137928485335320099, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularXDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137928485335320099, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: m_AngularYZDrive.positionSpring
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716283654677417821, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: HeadUpForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716283654677417821, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      propertyPath: _activeRagdollEnabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2628769470388675240, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 930949939}
+    - targetCorrespondingSourceObject: {fileID: 2628769470388675240, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 930949937}
+    - targetCorrespondingSourceObject: {fileID: 2628769470388675240, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 930949938}
   m_SourcePrefab: {fileID: 100100000, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
 --- !u!1001 &486614735
 PrefabInstance:
@@ -31321,6 +31783,10 @@ PrefabInstance:
     - target: {fileID: 2231323542125112989, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
       propertyPath: m_Name
       value: TestFood (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231323542125112989, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
+      propertyPath: m_TagString
+      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 8054340563043557621, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36493,6 +36959,67 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &622887290
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.708254
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8345957
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -26.94746
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_Name
+      value: character1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6767fa1dd090fd34d80bbb87d30c4d10, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7966d979d9982a743a30e3b75a402b94, type: 3}
 --- !u!1001 &654930589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59250,6 +59777,163 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &930949935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2628769470388675240, guid: a306449c27618cc4fb04bfaf6436f798, type: 3}
+  m_PrefabInstance: {fileID: 467861339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &930949937
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930949935}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!153 &930949938
+ConfigurableJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930949935}
+  m_ConnectedBody: {fileID: 286847366}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -0.14564866, y: 0.33275715, z: -0.00023673517}
+  serializedVersion: 3
+  m_SecondaryAxis: {x: 0, y: 1, z: 0}
+  m_XMotion: 0
+  m_YMotion: 0
+  m_ZMotion: 0
+  m_AngularXMotion: 2
+  m_AngularYMotion: 2
+  m_AngularZMotion: 2
+  m_LinearLimitSpring:
+    spring: 0
+    damper: 0
+  m_LinearLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularXLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowAngularXLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_HighAngularXLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularYZLimitSpring:
+    spring: 0
+    damper: 0
+  m_AngularYLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_AngularZLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_TargetPosition: {x: 0, y: 0, z: 0}
+  m_TargetVelocity: {x: 0, y: 0, z: 0}
+  m_XDrive:
+    serializedVersion: 4
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+    useAcceleration: 0
+  m_YDrive:
+    serializedVersion: 4
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+    useAcceleration: 0
+  m_ZDrive:
+    serializedVersion: 4
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+    useAcceleration: 0
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
+  m_RotationDriveMode: 1
+  m_AngularXDrive:
+    serializedVersion: 4
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+    useAcceleration: 0
+  m_AngularYZDrive:
+    serializedVersion: 4
+    positionSpring: 0
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+    useAcceleration: 0
+  m_SlerpDrive:
+    serializedVersion: 4
+    positionSpring: 1500
+    positionDamper: 0
+    maximumForce: 3.4028233e+38
+    useAcceleration: 0
+  m_ProjectionMode: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_ConfiguredInWorldSpace: 0
+  m_SwapBodies: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!136 &930949939
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930949935}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Height: 0.46
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.18, z: 0}
 --- !u!43 &946781124
 Mesh:
   m_ObjectHideFlags: 0
@@ -59699,7 +60383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.00042653547
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.x
@@ -59707,7 +60391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalRotation.z
@@ -68857,6 +69541,10 @@ PrefabInstance:
     - target: {fileID: 2231323542125112989, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
       propertyPath: m_Name
       value: TestFood (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231323542125112989, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
+      propertyPath: m_TagString
+      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 8054340563043557621, guid: 3aab9fa9ec1c44044be2677a8f908f2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -99111,8 +99799,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6684822758078498461, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: ThrowAngle
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684822758078498461, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: MaxSingleHandForce
-      value: 50
+      value: 3490.6697
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
@@ -99136,7 +99828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.00042653544
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.x
@@ -99144,7 +99836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.z
@@ -99156,7 +99848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 179.951
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -106167,3 +106859,4 @@ SceneRoots:
   - {fileID: 231860110}
   - {fileID: 486614735}
   - {fileID: 1257290505}
+  - {fileID: 622887290}
