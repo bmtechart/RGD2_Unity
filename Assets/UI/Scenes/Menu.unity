@@ -948,6 +948,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8908235844672805206, guid: 743a34d1aedb01f4c8d1a298d469c420, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908235844672805206, guid: 743a34d1aedb01f4c8d1a298d469c420, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908235844672805206, guid: 743a34d1aedb01f4c8d1a298d469c420, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908235844672805206, guid: 743a34d1aedb01f4c8d1a298d469c420, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9018194584153868159, guid: 743a34d1aedb01f4c8d1a298d469c420, type: 3}
       propertyPath: m_LocalPosition.z
       value: -17.54812
