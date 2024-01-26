@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
+public enum Hand
+{
+    Left,
+    Right,
+    Dual
+}
+
 public enum HandState
 {
     Empty,
@@ -22,13 +29,13 @@ public class FoodInteractionController : MonoBehaviour
     private HandState _leftHandState;
     private HandState _rightHandState;
 
-    private FoodObject _leftHandFoodObject;
-    private FoodObject _rightHandFoodObject;
-    private FoodObject _dualHandFoodObject;
+    internal FoodObject LeftHandFoodObject;
+    internal FoodObject RightHandFoodObject;
+    internal FoodObject DualHandFoodObject;
 
-    private float _leftHandThrowCharge;
-    private float _rightHandThrowCharge;
-    private float _dualHandThrowCharge;
+    internal float LeftHandThrowCharge;
+    internal float RightHandThrowCharge;
+    internal float DualHandThrowCharge;
 
     [Header("Pick-Up")]
     [SerializeField, Range(0.0f, 10.0f)] public float PickUpDistance = 2.0f;
@@ -62,9 +69,9 @@ public class FoodInteractionController : MonoBehaviour
         _rightHandState = HandState.Empty;
 
         //init throw charges
-        _leftHandThrowCharge = 0.0f;
-        _rightHandThrowCharge = 0.0f;
-        _dualHandThrowCharge = 0.0f;
+        LeftHandThrowCharge = 0.0f;
+        RightHandThrowCharge = 0.0f;
+        DualHandThrowCharge = 0.0f;
     }
 
     private void FixedUpdate()
@@ -92,15 +99,15 @@ public class FoodInteractionController : MonoBehaviour
             if (isCharging)
             {
                 //charge throw
-                _leftHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
+                LeftHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
 
                 //clamp charge at max
-                if (_leftHandThrowCharge > 1.0f)
+                if (LeftHandThrowCharge > 1.0f)
                 {
-                    _leftHandThrowCharge = 1.0f;
+                    LeftHandThrowCharge = 1.0f;
                 }
             }
-            else if (_leftHandThrowCharge > 0.0f)
+            else if (LeftHandThrowCharge > 0.0f)
             {
                 //throw
                 LeftHandThrow();
@@ -136,15 +143,15 @@ public class FoodInteractionController : MonoBehaviour
             if (isCharging)
             {
                 //charge throw
-                _rightHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
+                RightHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
 
                 //clamp charge at max
-                if (_rightHandThrowCharge > 1.0f)
+                if (RightHandThrowCharge > 1.0f)
                 {
-                    _rightHandThrowCharge = 1.0f;
+                    RightHandThrowCharge = 1.0f;
                 }
             }
-            else if (_rightHandThrowCharge > 0.0f)
+            else if (RightHandThrowCharge > 0.0f)
             {
                 //throw
                 RightHandThrow();
@@ -187,15 +194,15 @@ public class FoodInteractionController : MonoBehaviour
             if (isCharging)
             {
                 //charge throw
-                _dualHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
+                DualHandThrowCharge += Time.fixedDeltaTime / TimeToFullCharge;
 
                 //clamp charge at max
-                if (_dualHandThrowCharge > 1.0f)
+                if (DualHandThrowCharge > 1.0f)
                 {
-                    _dualHandThrowCharge = 1.0f;
+                    DualHandThrowCharge = 1.0f;
                 }
             }
-            else if (_dualHandThrowCharge > 0.0f)
+            else if (DualHandThrowCharge > 0.0f)
             {
                 //throw
                 DualHandThrow();
@@ -232,7 +239,7 @@ public class FoodInteractionController : MonoBehaviour
     {
         Debug.Log("food object picked up with left hand");
         //assign
-        _leftHandFoodObject = food;
+        LeftHandFoodObject = food;
         
         //disable physics
         food.HoldObject();
@@ -249,7 +256,7 @@ public class FoodInteractionController : MonoBehaviour
     {
         Debug.Log("food object picked up with right hand");
         //assign
-        _rightHandFoodObject = food;
+        RightHandFoodObject = food;
 
         //disable physics
         food.HoldObject();
@@ -266,7 +273,7 @@ public class FoodInteractionController : MonoBehaviour
     {
         Debug.Log("food object picked up with both hands");
         //assign
-        _dualHandFoodObject = food;
+        DualHandFoodObject = food;
 
         //disable physics
         food.HoldObject();
@@ -282,77 +289,77 @@ public class FoodInteractionController : MonoBehaviour
 
     private void LeftHandThrow()
     {
-        if (_leftHandFoodObject != null)
+        if (LeftHandFoodObject != null)
         {
             Debug.Log("food object thrown with left hand");
             //unparent
-            _leftHandFoodObject.transform.SetParent(null);
+            LeftHandFoodObject.transform.SetParent(null);
 
             //enable physics
-            _leftHandFoodObject.DropObject();
+            LeftHandFoodObject.DropObject();
 
             //apply force with random torque
-            _leftHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * _leftHandThrowCharge * MaxSingleHandForce, _leftHandFoodObject.transform.position + Random.insideUnitSphere * _leftHandFoodObject.ObjectCoreRadius);
+            LeftHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * LeftHandThrowCharge * MaxSingleHandForce, LeftHandFoodObject.transform.position + Random.insideUnitSphere * LeftHandFoodObject.ObjectCoreRadius);
 
             //reset charge
-            _leftHandThrowCharge = 0.0f;
+            LeftHandThrowCharge = 0.0f;
 
             //change hand state
             _leftHandState = HandState.Empty;
 
             //remove reference
-            _leftHandFoodObject = null;
+            LeftHandFoodObject = null;
         }
     }
 
     private void RightHandThrow()
     {
-        if (_rightHandFoodObject != null)
+        if (RightHandFoodObject != null)
         {
             Debug.Log("food object thrown with right hand");
             //unparent
-            _rightHandFoodObject.transform.SetParent(null);
+            RightHandFoodObject.transform.SetParent(null);
 
             //enable physics
-            _rightHandFoodObject.DropObject();
+            RightHandFoodObject.DropObject();
 
             //apply force with random torque
-            _rightHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * _rightHandThrowCharge * MaxSingleHandForce, _rightHandFoodObject.transform.position + Random.insideUnitSphere * _rightHandFoodObject.ObjectCoreRadius);
+            RightHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * RightHandThrowCharge * MaxSingleHandForce, RightHandFoodObject.transform.position + Random.insideUnitSphere * RightHandFoodObject.ObjectCoreRadius);
 
             //reset charge
-            _rightHandThrowCharge = 0.0f;
+            RightHandThrowCharge = 0.0f;
 
             //change hand state
             _rightHandState = HandState.Empty;
 
             //remove reference
-            _rightHandFoodObject = null;
+            RightHandFoodObject = null;
         }
     }
 
     private void DualHandThrow()
     {
-        if (_dualHandFoodObject != null)
+        if (DualHandFoodObject != null)
         {
             Debug.Log("food object thrown with both hands");
             //unparent
-            _dualHandFoodObject.transform.SetParent(null);
+            DualHandFoodObject.transform.SetParent(null);
 
             //enable physics
-            _dualHandFoodObject.DropObject();
+            DualHandFoodObject.DropObject();
 
             //apply force with random torque
-            _dualHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * _dualHandThrowCharge * MaxSingleHandForce, _dualHandFoodObject.transform.position + Random.insideUnitSphere * _dualHandFoodObject.ObjectCoreRadius);
+            DualHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * DualHandThrowCharge * MaxSingleHandForce, DualHandFoodObject.transform.position + Random.insideUnitSphere * DualHandFoodObject.ObjectCoreRadius);
 
             //reset charge
-            _dualHandThrowCharge = 0.0f;
+            DualHandThrowCharge = 0.0f;
 
             //change hand state
             _leftHandState = HandState.Empty;
             _rightHandState = HandState.Empty;
 
             //remove reference
-            _dualHandFoodObject = null;
+            DualHandFoodObject = null;
         }
     }
 
