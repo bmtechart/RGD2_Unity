@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1638474901358502360}
   - component: {fileID: 8929822333698449871}
   - component: {fileID: 6192494004402700347}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 2893612455833645531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.301, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7253460524970251635}
@@ -97,7 +97,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2533113573355706392}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: TestBallSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 3580848889277978815}
   - component: {fileID: 6823183628613304945}
   - component: {fileID: 4041040571035442848}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8376156626208875866}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -198,7 +198,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 3
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.25
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TestBall: {fileID: 2152630872239541819, guid: d68b9cc88fb04eb4ab9f08c29d24e98b, type: 3}
   BallSpawn: {fileID: 2533113573355706392}
-  ThrowForce: 1000
+  ThrowForce: 3000
 --- !u!114 &3551944659606528856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,9 +280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
-  jump: 0
-  sprint: 0
-  analogMovement: 0
+  jump: 1
+  sprint: 1
+  analogMovement: 1
   cursorLocked: 1
   cursorInputForLook: 1
 --- !u!114 &6823183628613304945
@@ -395,14 +395,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9b346627c6e8145ae6019082731906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUpDistance: 2.5
-  SingleHandMassLimit: 5
-  ThrowAngle: 30
-  TimeToFullCharge: 5
-  MaxSingleHandForce: 10000
-  LeftHandObjectPosition: {x: -0.5, y: -0.5, z: 1}
-  RightHandObjectPosition: {x: 0.5, y: -0.5, z: 1}
-  DualHandObjectPosition: {x: 0.25, y: -0.5, z: 1}
+  PickUpDistance: 3.16
+  SingleHandMassLimit: 99
+  ThrowAngle: 20
+  TimeToFullCharge: 1.4
+  MaxSingleHandForce: 24390
+  LeftHandObjectPosition: {x: -0.5, y: -0.3, z: 1}
+  RightHandObjectPosition: {x: 0.5, y: -0.3, z: 1}
+  DualHandObjectPosition: {x: 0.25, y: -0.3, z: 1}
 --- !u!1 &8637992310320711418
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6950983732064747280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerCameraRoot
   m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ Transform:
   m_GameObject: {fileID: 8637992310320711418}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 2.671, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
