@@ -67,7 +67,7 @@ public class UIMenuManager : MonoBehaviour
         exitMenu.SetActive(false);
         //if (extrasMenu) extrasMenu.SetActive(false);
         playMenu.SetActive(true);
-        SceneManager.LoadScene("Testing_UI");
+        SceneManager.LoadScene("Scene_Main");
     }
 
     public void PlayCampaignMobile()

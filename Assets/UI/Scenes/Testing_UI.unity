@@ -72217,7 +72217,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332104222}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -76801,7 +76801,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1443501658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90a8d4a79bbd2a247bdab86bc9d449c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e67f361cc138354aab6d48168cd7059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ThrowPromptCanvas: {fileID: 1507914235}
@@ -81954,7 +81954,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507914232}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -82002,7 +82002,7 @@ GameObject:
   - component: {fileID: 1526851875}
   - component: {fileID: 1526851874}
   - component: {fileID: 1526851873}
-  - component: {fileID: 1526851872}
+  - component: {fileID: 1526851877}
   m_Layer: 0
   m_Name: Food_Trigger
   m_TagString: Untagged
@@ -82010,19 +82010,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1526851872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526851871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24d9666d8eb2bfb4087aec00707f7178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrabPromptCanvas: {fileID: 1332104225}
 --- !u!65 &1526851873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82109,6 +82096,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1717503122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1526851877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526851871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc66ad9ffb71d34297e0ed4c5126163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabPromptCanvas: {fileID: 1332104225}
 --- !u!43 &1544962298
 Mesh:
   m_ObjectHideFlags: 0
