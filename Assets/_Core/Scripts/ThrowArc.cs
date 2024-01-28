@@ -31,21 +31,24 @@ public class ThrowArc : MonoBehaviour
 
     private void Update()
     {
+        //limit direction of line renderer to horizontal plane
+        transform.LookAt(transform.position + new Vector3(transform.forward.x, 0.0f, transform.forward.z));
+
         //draw arc if charging throw
         if (ThrowingHand == Hand.Left && Player.LeftHandThrowCharge > 0.0f)
         {
             //draw left handed arc
-            DrawArc(Player.LeftHandObjectPosition, Player.LeftHandThrowCharge, Player.MaxSingleHandForce, Player.LeftHandFoodObject);
+            DrawArc(Player.LeftHandThrowCharge, Player.MaxSingleHandForce, Player.LeftHandFoodObject);
         }
         else if (ThrowingHand == Hand.Right && Player.RightHandThrowCharge > 0.0f)
         {
             //draw left handed arc
-            DrawArc(Player.RightHandObjectPosition, Player.RightHandThrowCharge, Player.MaxSingleHandForce, Player.RightHandFoodObject);
+            DrawArc(Player.RightHandThrowCharge, Player.MaxSingleHandForce, Player.RightHandFoodObject);
         }
         else if (ThrowingHand == Hand.Dual && Player.DualHandThrowCharge > 0.0f)
         {
             //draw left handed arc
-            DrawArc(Player.DualHandObjectPosition, Player.DualHandThrowCharge, Player.MaxDualHandForce, Player.DualHandFoodObject);
+            DrawArc(Player.DualHandThrowCharge, Player.MaxSingleHandForce * 2.0f, Player.DualHandFoodObject);
         }
         else
         {
@@ -54,14 +57,14 @@ public class ThrowArc : MonoBehaviour
         }
     }
 
-    private void DrawArc(Vector3 startPoint, float throwCharge, float maxForce, FoodObject food)
+    private void DrawArc(float throwCharge, float maxForce, FoodObject food)
     {
         //calculate vertices
         for(int i = 0; i < _lineVertices.Length; i++)
         {
             if (i == 0)
             {
-                _lineVertices[0] = startPoint;
+                _lineVertices[0] = transform.InverseTransformPoint(food.transform.position);
             }
             else
             {
@@ -78,14 +81,22 @@ public class ThrowArc : MonoBehaviour
                 }
 
                 //find angle
-                float radianAngle = Mathf.Deg2Rad * (Vector3.Angle(Player.transform.forward, Camera.main.transform.forward) - Player.ThrowAngle);
-                Debug.Log(radianAngle);
+                float radianAngle;
+                if (Camera.main.transform.forward.y >= 0.0f)
+                {
+                    radianAngle = Mathf.Deg2Rad * (-Vector3.Angle(Player.transform.forward, Camera.main.transform.forward) - Player.ThrowAngle);
+                }
+                else
+                {
+                    radianAngle = Mathf.Deg2Rad * (Vector3.Angle(Player.transform.forward, Camera.main.transform.forward) - Player.ThrowAngle);
+                }
+                Debug.Log(-radianAngle * Mathf.Rad2Deg);
 
                 //find y coordinate
                 float yCoordinate = -(xCoordinate * Mathf.Tan(radianAngle) - (Physics.gravity.y * xCoordinate * xCoordinate / (2 * estimatedVelocity * estimatedVelocity * Mathf.Cos(radianAngle) * Mathf.Cos(radianAngle))));
 
                 //calculate vertex
-                _lineVertices[i] = startPoint + new Vector3(0.0f, yCoordinate, xCoordinate);
+                _lineVertices[i] = transform.InverseTransformPoint(food.transform.position) + new Vector3(0.0f, yCoordinate, xCoordinate);
             }
         }
 

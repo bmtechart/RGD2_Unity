@@ -44,13 +44,12 @@ public class FoodInteractionController : MonoBehaviour
     [Header("Throw")]
     [SerializeField, Range(0.0f, 90.0f)] public float ThrowAngle = 30.0f;
     [SerializeField, Range(0.001f, 30.0f)] public float TimeToFullCharge = 5.0f;
-    [SerializeField, Range(0.0f, 100000.0f)] public float MaxSingleHandForce = 5000.0f;
-    [SerializeField, Range(0.0f, 100000.0f)] public float MaxDualHandForce = 10000.0f;
+    [SerializeField, Range(0.0f, 100000.0f)] public float MaxSingleHandForce = 10000.0f;
 
     [Header("Held Food Positions")]
     [SerializeField] public Vector3 LeftHandObjectPosition = new Vector3(-0.5f, -0.5f, 1.0f);
-    [SerializeField] public Vector3 RightHandObjectPosition = new Vector3(0.0f, -0.5f, 1.0f);
-    [SerializeField] public Vector3 DualHandObjectPosition = new Vector3(0.5f, -0.5f, 1.0f);
+    [SerializeField] public Vector3 RightHandObjectPosition = new Vector3(0.5f, -0.5f, 1.0f);
+    [SerializeField] public Vector3 DualHandObjectPosition = new Vector3(0.25f, -0.5f, 1.0f);
 
     private void Start()
     {
@@ -349,7 +348,7 @@ public class FoodInteractionController : MonoBehaviour
             DualHandFoodObject.DropObject();
 
             //apply force with random torque
-            DualHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * DualHandThrowCharge * MaxSingleHandForce, DualHandFoodObject.transform.position + Random.insideUnitSphere * DualHandFoodObject.ObjectCoreRadius);
+            DualHandFoodObject.GetComponent<Rigidbody>().AddForceAtPosition(Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward * DualHandThrowCharge * MaxSingleHandForce * 2.0f, DualHandFoodObject.transform.position + Random.insideUnitSphere * DualHandFoodObject.ObjectCoreRadius);
 
             //reset charge
             DualHandThrowCharge = 0.0f;

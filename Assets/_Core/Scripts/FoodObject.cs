@@ -4,36 +4,29 @@ using UnityEngine;
 
 public class FoodObject : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
-    private Collider _collider;
+    protected Rigidbody _rigidbody;
+    protected Collider _collider;
+    protected Vector3 _meshExtents;
 
-    [Header("Physical Properties")]
-    [SerializeField, Range(0.001f, 10.0f)] public float StandardMass = 1.0f;
-    [SerializeField, Range(0.1f, 5.0f)] public float DragCoefficient = 0.47f;
     [SerializeField, Range(10.0f, 50.0f)] public float MaxVelocity = 20.0f;
-    [SerializeField, Range(0.0f, 10.0f)] public float ObjectCoreRadius = 0.25f; //for random torque
+    internal float ObjectCoreRadius; //for random torque
 
-    private void Start()
+    protected virtual void Start()
     {
         //get rigidbody
         _rigidbody = GetComponent<Rigidbody>();
 
-        //set physical properties
-        _rigidbody.mass = StandardMass * transform.localScale.x * transform.localScale.y * transform.localScale.z;
-        _rigidbody.drag = DragCoefficient;
-        _rigidbody.maxLinearVelocity = MaxVelocity;
-
         //get collider
         _collider = GetComponent<Collider>();
-    }
 
-    public void ScaleFood(Vector3 scale)
-    {
-        //set scale
-        transform.localScale = scale;
+        //get mesh extents
+        _meshExtents = GetComponent<MeshFilter>().mesh.bounds.extents;
 
-        //set physical properties
-        _rigidbody.mass = StandardMass * transform.localScale.x * transform.localScale.y * transform.localScale.z;
+        //set max velocity
+        _rigidbody.maxLinearVelocity = MaxVelocity;
+
+        //set object core radius
+        ObjectCoreRadius = (_meshExtents.x + _meshExtents.y + _meshExtents.z) / 3.0f;
     }
 
     //pick up object
