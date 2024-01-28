@@ -23,7 +23,7 @@ MonoBehaviour:
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 1
+  m_Maximized: 0
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -331,7 +331,11 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/_Core/Scenes
   m_LastFoldersGridSize: -1
+<<<<<<< HEAD
   m_LastProjectPath: D:\BVC_Student\RapidGameDevelopment\RGD2_Unity
+=======
+  m_LastProjectPath: E:\Unity\Projects2\BVC_AGJ_2\RGD2_Unity
+>>>>>>> origin/Levels_Tom
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -570,8 +574,13 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
+<<<<<<< HEAD
       snapOffset: {x: -171, y: -26.399994}
       snapOffsetDelta: {x: 0, y: -0.26669312}
+=======
+      snapOffset: {x: -171, y: -26.400024}
+      snapOffsetDelta: {x: 0, y: 0}
+>>>>>>> origin/Levels_Tom
       snapCorner: 3
       id: Tool Settings
       index: 0

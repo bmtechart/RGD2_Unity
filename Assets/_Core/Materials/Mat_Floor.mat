@@ -66,5 +66,5 @@ Material:
     - _Scale_SN: 25.55
     m_Colors:
     - _Base_Color: {r: 0.9245283, g: 0.8987589, b: 0.8678355, a: 1}
-    - _Checkerboard: {r: 20, g: 20, b: 0, a: 0}
+    - _Checkerboard: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
