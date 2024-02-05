@@ -13,6 +13,10 @@ namespace StarterAssets
 	{
 		[SerializeField] PlayerMovementSettings playerMovementSettings;
 
+		[Header("Cinemachine")]
+		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
+		public GameObject CinemachineCameraTarget;
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -106,7 +110,7 @@ namespace StarterAssets
 				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, playerMovementSettings.BottomClamp, playerMovementSettings.TopClamp);
 
 				// Update Cinemachine camera target pitch
-				playerMovementSettings.CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+				CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
 
 				// rotate the player left and right
 				transform.Rotate(Vector3.up * _rotationVelocity);
