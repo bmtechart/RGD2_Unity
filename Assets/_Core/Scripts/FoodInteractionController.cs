@@ -11,15 +11,6 @@ public enum Hand
     Dual
 }
 
-public enum HandState
-{
-    Empty,
-    LiftingLight,
-    LiftingHeavy,
-    HoldingLight,
-    HoldingHeavy
-}
-
 public class FoodInteractionController : MonoBehaviour
 {
     private PlayerInput _playerInput;

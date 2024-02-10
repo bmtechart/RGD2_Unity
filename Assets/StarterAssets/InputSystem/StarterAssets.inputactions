@@ -312,6 +312,56 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "HandInteraction",
+            "id": "e6845834-cddc-4a7f-a9e8-78ceba9a1bce",
+            "actions": [
+                {
+                    "name": "HandAction",
+                    "type": "Button",
+                    "id": "576db7d2-e745-4b71-88d7-5cd28bcb63cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0174021c-96a8-4de3-b6f1-26cc57de3fa4",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03e373dd-7d88-43fe-8e07-c2c91db4c1ac",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0751a279-a6dd-4e0e-8889-6ad301284f79",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HandAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
