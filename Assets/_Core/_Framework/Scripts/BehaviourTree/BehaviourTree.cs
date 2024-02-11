@@ -20,7 +20,6 @@ public class BehaviourTree : Node
 
     public override Status Process()
     {
-
         return children[currentChild].Process();
     }
 
@@ -51,6 +50,34 @@ public class BehaviourTree : Node
         }
 
         Debug.Log(treePrintout);
+    }
+
+    public string GetCurrentNodeStatus()
+    {
+        string nodePrintout = "";
+
+        Stack<NodeLevel> nodeStack = new Stack<NodeLevel>();
+        Node currentNode = this;
+        nodeStack.Push(new NodeLevel { level = 0, node = currentNode });
+
+        while (nodeStack.Count != 0)
+        {
+            NodeLevel nextNode = nodeStack.Pop();
+            for (int i = nextNode.node.children.Count - 1; i >= 0; i--)
+            {
+                nodeStack.Push(new NodeLevel { level = nextNode.level + 1, node = nextNode.node.children[i] });
+            }
+        }
+
+        foreach (NodeLevel nodeLevel in nodeStack)
+        {
+            if(nodeLevel.node.status == Node.Status.RUNNING)
+            {
+                nodePrintout += nodeLevel.node.name + " running!";
+            }
+        }
+
+        return nodePrintout;
     }
     #endregion
 }

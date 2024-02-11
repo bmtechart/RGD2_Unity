@@ -17,7 +17,8 @@ public class Leaf : Node
 
     public override Status Process()
     {
-        if(ProcessMethod != null) return ProcessMethod();
+        if (status == Status.RUNNING) { Debug.Log(name + " running!"); }
+        if (ProcessMethod != null) return ProcessMethod();
         return Status.FAILURE;
     }
 }

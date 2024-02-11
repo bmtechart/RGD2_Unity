@@ -1,49 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
+    #region Debug
+    [SerializeField] private bool ShowDebug;
+    [SerializeField] private GameObject AIDebugObject;
+    #endregion
 
-    protected BehaviourTree behaviourTree;
+    #region Behaviour Componenets
+    [SerializeField] protected AIMovement aiMovement;
+    [SerializeField] protected AIVision aiVision;
+
+    #endregion
+
+    #region Behaviour Tree
+    protected BehaviourTree Tree;
     Node.Status treeStatus = Node.Status.RUNNING;
+    #endregion
 
-    //stores all AI behaviours found on the parent game object. 
-    //The goal is to use the GetBehaviour function instead of 
-    protected Dictionary<Type, AIBehaviour> AIBehaviours;
     // Awake is called when a script is loaded, before start
     private void Awake()
     {
-        //initialize AI behaviour dictionary
-        AIBehaviours = new Dictionary<Type, AIBehaviour>();
-        RegisterBehaviours();
-    }
-
-    /// <summary>
-    /// Gets references to all the components of type AIBehaviour on the game object.
-    /// Stores these components in a dictionary using their type as a key.
-    /// </summary>
-    private void RegisterBehaviours()
-    {
-        AIBehaviour[] behaviours = GetComponentsInChildren<AIBehaviour>();
-        foreach (AIBehaviour b in behaviours)
+        Tree = new BehaviourTree();
+        if (!AIDebugObject)
         {
-            AIBehaviours.Add(b.GetType(), b);
+            Debug.Log("Warning, cannot debug AI Controller without AI Debug Object.");
+            Debug.Log("Check prefabs folder of _Framework for PF_AIDebug.");
         }
     }
 
-    /// <summary>
-    /// AI Controller registers all AI behaviours on awake.
-    /// This function returns the AI behaviour of the type provided. 
-    /// </summary>
-    /// <typeparam name="T">AIBehaviour type</typeparam>
-    /// <returns></returns>
-    protected T GetBehaviour<T>() where T : AIBehaviour
-    {
-        if (!AIBehaviours.ContainsKey(typeof(T))) return null;
-        return (T) AIBehaviours[typeof(T)];
-    } 
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -54,6 +43,12 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        if (treeStatus != Node.Status.SUCCESS) treeStatus = behaviourTree.Process();
+        treeStatus = Tree.Process();
+
+        if(ShowDebug)
+        {
+            string DebugMessage = Tree.children[Tree.currentChild].name;
+            AIDebugObject.GetComponent<TextMeshPro>().text = Tree.GetCurrentNodeStatus();
+        }
     }
 }
