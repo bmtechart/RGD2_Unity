@@ -17,11 +17,11 @@ public class BasicEnemyController : AIController
         Sequence patrolNode = new Sequence("patrol");
 
         Leaf LookForPlayer = new Leaf("LookForPlayer", aiVision.LookForTarget);
-        Leaf patrolA = new Leaf("patrolA", FollowPlayer);
-        Leaf patrolB = new Leaf("b", PatrolB);
+        Leaf MoveToPlayer = new Leaf("Move to Player", FollowPlayer);
+        Leaf AttackPlayer = new Leaf("Attack Player", AttackPlayer);
         patrolNode.AddChild(LookForPlayer);
-        patrolNode.AddChild(patrolA);
-        patrolNode.AddChild(patrolB);
+        patrolNode.AddChild(MoveToPlayer);
+        patrolNode.AddChild(AttackPlayer);
 
 
         Tree.AddChild(patrolNode);
