@@ -22,27 +22,12 @@ public class PlayerThrowController : MonoBehaviour
 
     private HandState _handState;
 
-    internal FoodObject HeldObject;
+    internal ThrowableObject HeldObject;
 
-    [Header("Grab")]
-    [SerializeField, Range(0.0f, 10.0f), Tooltip("Distance (m) of the sphere cast used for determining if an object is grabbable.")] public float GrabDistance = 2.0f;
-    [SerializeField, Range(0.001f, 0.5f), Tooltip("Radius (m) of the sphere cast used for determining if an object is grabbable.")] public float GrabSphereCastRadius = 0.1f;
+    [SerializeField] public PlayerThrowSettings playerThrowSettings;
 
-    [Header("Throw")]
-    [SerializeField, Range(0.0f, 45.0f), Tooltip("Angle (°) that objects are thown at (in relation to the camera angle).")] public float ThrowAngle = 15.0f;
-    [SerializeField, Range(0.0f, 100.0f), Tooltip("Velocity (m/s) that objects travel at when thrown.")] public float ThrowVelocity = 20.0f;
-
-    [Header("Aim Assist")]
-    [SerializeField] public bool UseAimAssist = true;
-    [SerializeField, Range(0.0f, 90.0f), Tooltip("Maximum horizontal arc (°) for detecting targets to aim at.")] public float FullAccuracyBonus = 15.0f;
-    internal float AccuracyBonus;
     private float _maxTargetDistance;
-    [SerializeField, Range(0.001f, 60.0f), Tooltip("Time (s) needed to hold the throw button to achive a full accuracy bonus.")] public float TimeToFullAccuracy = 1.0f;
-    [SerializeField, Range(0.001f, 60.0f), Tooltip("Time (s) that it takes to fully decay the accuracy bonus after holding the throw button to full accuracy.")] public float TimeFromFullAccuracy = 1.0f;
     private float _accuracyBonusTimer;
-
-    [Header("Held Object Position")]
-    [SerializeField, Tooltip("The position relative to the camera at which objects are held.")] public Vector3 HeldObjectPosition = new Vector3(0.5f, -0.5f, 1.0f);
 
     private void Start()
     {
@@ -59,9 +44,9 @@ public class PlayerThrowController : MonoBehaviour
         _handState = HandState.Empty;
 
         //init other variables
-        AccuracyBonus = 0.0f;
+        playerThrowSettings.AccuracyBonus = 0.0f;
         _accuracyBonusTimer = 0.0f;
-        _maxTargetDistance = ThrowVelocity * ThrowVelocity / Mathf.Abs(Physics.gravity.y);
+        _maxTargetDistance = playerThrowSettings.ThrowVelocity * playerThrowSettings.ThrowVelocity / Mathf.Abs(Physics.gravity.y);
     }
 
     private void FixedUpdate()
@@ -92,40 +77,43 @@ public class PlayerThrowController : MonoBehaviour
             _accuracyBonusTimer += Time.fixedDeltaTime;
 
             //calculate accuracy bonus
-            if (_accuracyBonusTimer < TimeToFullAccuracy)
+            if (_accuracyBonusTimer < playerThrowSettings.TimeToFullAccuracy)
             {
-                AccuracyBonus = _accuracyBonusTimer / TimeToFullAccuracy;
+                playerThrowSettings.AccuracyBonus = _accuracyBonusTimer / playerThrowSettings.TimeToFullAccuracy;
             }
             else
             {
-                AccuracyBonus = 1.0f - (_accuracyBonusTimer - TimeToFullAccuracy) / TimeFromFullAccuracy;
+                playerThrowSettings.AccuracyBonus = 1.0f - (_accuracyBonusTimer - playerThrowSettings.TimeToFullAccuracy) / playerThrowSettings.TimeFromFullAccuracy;
             }
 
             //clamp accuracy bonus
-            if (AccuracyBonus < 0.0f)
+            if (playerThrowSettings.AccuracyBonus < 0.0f)
             {
-                AccuracyBonus = 0.0f;
+                playerThrowSettings.AccuracyBonus = 0.0f;
             }
         }
         else
         {
             //throw if no longer charging
             ThrowObject();
+
+            //reset timer
+            _accuracyBonusTimer = 0.0f;
         }
     }
 
-    private void GrabObject(FoodObject food)
+    private void GrabObject(ThrowableObject throwableObject)
     {
         Debug.Log("object grabbed");
         //assign
-        HeldObject = food;
+        HeldObject = throwableObject;
 
         //disable physics
-        food.HoldObject();
+        throwableObject.HoldObject();
 
         //position
-        food.transform.SetParent(Camera.main.transform);
-        food.transform.localPosition = HeldObjectPosition;
+        throwableObject.transform.SetParent(Camera.main.transform);
+        throwableObject.transform.localPosition = playerThrowSettings.HeldObjectPosition;
 
         //change hand state
         _handState = HandState.Holding;
@@ -143,7 +131,7 @@ public class PlayerThrowController : MonoBehaviour
 
             //get target if using aim assist
             AimAssistTarget target = null;
-            if (UseAimAssist)
+            if (playerThrowSettings.UseAimAssist)
             {
                 target = GetAimAssistTarget();
             }
@@ -152,22 +140,27 @@ public class PlayerThrowController : MonoBehaviour
             if (target != null)
             {
                 Debug.Log("object thrown with aim assist");
+
                 //determine modified angles for aim assist
-                float assistedAngleX = 0.0f;
-                float assistedAngleY = 0.0f;
+                float assistedAngleX = Mathf.Rad2Deg * -(Mathf.Asin(Vector3.Distance(new Vector3(target.transform.position.x, 0.0f, target.transform.position.z), new Vector3(HeldObject.transform.position.x, 0.0f, HeldObject.transform.position.z)) * Physics.gravity.y / playerThrowSettings.ThrowVelocity / playerThrowSettings.ThrowVelocity) / 2.0f);
+                float assistedAngleY = Vector3.SignedAngle(new Vector3(target.transform.position.x, 0.0f, target.transform.position.z) - new Vector3(HeldObject.transform.position.x, 0.0f, HeldObject.transform.position.z), new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z), Vector3.up);
+                
+                //find camera pitch
+                float cameraPitch = Vector3.SignedAngle(new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z), Camera.main.transform.forward, Camera.main.transform.right);
 
                 //apply velocity at modified angle
-                HeldObject.GetComponent<Rigidbody>().velocity = ThrowVelocity * (Quaternion.AngleAxis(-assistedAngleY, Vector3.up) * (Quaternion.AngleAxis(-assistedAngleX, Camera.main.transform.right) * Camera.main.transform.forward));
+                HeldObject.GetComponent<Rigidbody>().velocity = playerThrowSettings.ThrowVelocity * (Quaternion.AngleAxis(-assistedAngleY, Vector3.up) * (Quaternion.AngleAxis(-assistedAngleX - cameraPitch, Camera.main.transform.right) * Camera.main.transform.forward));
             }
             else
             {
-                Debug.Log("object thrown without aim assist");
+                Debug.Log("object thrown");
+
                 //apply velocity at default angle
-                HeldObject.GetComponent<Rigidbody>().velocity = ThrowVelocity * (Quaternion.AngleAxis(-ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward);
+                HeldObject.GetComponent<Rigidbody>().velocity = playerThrowSettings.ThrowVelocity * (Quaternion.AngleAxis(-playerThrowSettings.ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward);
             }
 
             //reset accuracy bonus
-            AccuracyBonus = 0.0f;
+            playerThrowSettings.AccuracyBonus = 0.0f;
 
             //change hand state
             _handState = HandState.Empty;
@@ -185,7 +178,7 @@ public class PlayerThrowController : MonoBehaviour
         for (int i = aimAssistTargets.Count - 1; i >= 0; i--)
         {
             Vector3 targetDirection = aimAssistTargets[i].transform.position - Camera.main.transform.position;
-            if (Vector3.Angle(new Vector3(targetDirection.x, 0.0f, targetDirection.z), new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z)) > FullAccuracyBonus / 2.0f * AccuracyBonus)
+            if (Vector3.Angle(new Vector3(targetDirection.x, 0.0f, targetDirection.z), new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z)) > playerThrowSettings.FullAccuracyBonus / 2.0f * playerThrowSettings.AccuracyBonus)
             {
                 aimAssistTargets.Remove(aimAssistTargets[i]);
             }
@@ -233,14 +226,14 @@ public class PlayerThrowController : MonoBehaviour
         if (_handState == HandState.Empty)
         {
             //sphere cast to try grab
-            if (Physics.SphereCast(Camera.main.transform.position, GrabSphereCastRadius, Camera.main.transform.forward, out RaycastHit hit, GrabDistance))
+            if (Physics.SphereCast(Camera.main.transform.position, playerThrowSettings.GrabSphereCastRadius, Camera.main.transform.forward, out RaycastHit hit, playerThrowSettings.GrabDistance))
             {
                 //if throwable object
-                FoodObject food = hit.collider.GetComponent<FoodObject>();
-                if (food != null)
+                ThrowableObject throwableObject = hit.collider.GetComponent<ThrowableObject>();
+                if (throwableObject != null)
                 {
                     //grab object
-                    GrabObject(food);
+                    GrabObject(throwableObject);
                 }
             }
         }
