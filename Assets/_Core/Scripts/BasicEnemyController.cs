@@ -18,7 +18,7 @@ public class BasicEnemyController : AIController
 
         Leaf LookForPlayer = new Leaf("LookForPlayer", aiVision.LookForTarget);
         Leaf MoveToPlayer = new Leaf("Move to Player", FollowPlayer);
-        Leaf AttackPlayer = new Leaf("Attack Player", AttackPlayer);
+        Leaf AttackPlayer = new Leaf("Attack Player", Attack);
         patrolNode.AddChild(LookForPlayer);
         patrolNode.AddChild(MoveToPlayer);
         patrolNode.AddChild(AttackPlayer);
@@ -42,7 +42,7 @@ public class BasicEnemyController : AIController
         return aiMovement.GoToLocation(PatrolPointB.transform.position);
     }
 
-    public Node.Status AttackPlayer()
+    public Node.Status Attack()
     {
         return Node.Status.SUCCESS;
     }
