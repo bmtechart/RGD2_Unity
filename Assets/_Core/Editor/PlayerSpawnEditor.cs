@@ -15,9 +15,6 @@ public class PlayerSpawnEditor : Editor
         Handles.DrawWireDisc(playerSpawner.transform.position, playerSpawner.transform.up, 1f);
     }
 
-
-
-
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
