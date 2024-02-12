@@ -12,6 +12,9 @@ public class AIController : MonoBehaviour
     #endregion
 
     #region Behaviour Componenets
+    public Dictionary<string, AIBehaviour> Behaviours;
+
+
     [SerializeField] protected AIMovement aiMovement;
     [SerializeField] protected AIVision aiVision;
     [SerializeField] protected AIAttack aiAttack;
@@ -25,6 +28,13 @@ public class AIController : MonoBehaviour
     // Awake is called when a script is loaded, before start
     private void Awake()
     {
+        Behaviours = new Dictionary<string, AIBehaviour>();
+
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            
+        }
+
         Tree = new BehaviourTree();
         if (!AIDebugObject)
         {

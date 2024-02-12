@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class AIBehaviour : MonoBehaviour
 {
+    [SerializeField] private string Name;
+    private void Awake()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {

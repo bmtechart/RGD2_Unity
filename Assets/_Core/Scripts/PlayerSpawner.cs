@@ -19,6 +19,8 @@ public class PlayerSpawner : MonoBehaviour
         CinemachineVirtualCamera virtualFollowCamera = PlayerFollowCamera.GetComponent<CinemachineVirtualCamera>();
         virtualFollowCamera.Follow = PlayerCapsule.transform.Find("PlayerCameraRoot");
         virtualFollowCamera.LookAt = PlayerCapsule.transform.Find("Player");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void OnDrawGizmos()
