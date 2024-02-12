@@ -10,6 +10,8 @@ public class AIMovement : AIBehaviour
     enum MovingState { MOVING, IDLE, FOLLOWING };
     private MovingState movingState;
 
+    [SerializeField] private Animator animator;
+
     private GameObject followTarget;
     [SerializeField]
     [Tooltip("When the follow target deviates from its initial position by this amount, recalculate the path to the target.")]
@@ -30,7 +32,7 @@ public class AIMovement : AIBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateAnimator();
     }
 
     //movement function to use in our behaviour tree
@@ -99,5 +101,17 @@ public class AIMovement : AIBehaviour
         }
         //default return running
         return Node.Status.RUNNING;
+    }
+
+    public void UpdateAnimator()
+    {
+        if (!animator)
+        {
+            Debug.Log("No animator assigned to movement component!");
+            return;
+        }
+        float normalizedMoveSpeed = Mathf.InverseLerp(0, agent.speed, agent.velocity.magnitude);
+        Debug.Log("Normalized Move Speed: " + normalizedMoveSpeed.ToString());
+        animator.SetFloat("MoveSpeed", normalizedMoveSpeed);
     }
 }
