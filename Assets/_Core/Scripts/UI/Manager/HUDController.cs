@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class HUDController : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject losingGamePanel;
