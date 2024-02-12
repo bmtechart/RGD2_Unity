@@ -10,17 +10,22 @@ public class GameManager : Singleton<GameManager>
 {
 
     /// <summary>
-    /// Delegate for when  
+    /// Delegate for when the player loses the game.
     /// </summary>
     public delegate void OnGameOver();
 
     public static event OnGameOver onGameOver;
+
+    /// <summary>
+    /// Event for when the player completes a level. 
+    /// </summary>
+    public delegate void OnLevelEnd();
+    public static event OnLevelEnd onLevelEnd;
     // Start is called before the first frame update
 
     override protected void Awake()
     {
         base.Awake();
-        onGameOver += GameOver;
     }
 
     override protected void Start()
@@ -38,8 +43,13 @@ public class GameManager : Singleton<GameManager>
     /// Function to call when the game session ends. 
     /// Override to add default functionality when game ends. 
     /// </summary>
-    protected virtual void GameOver()
+    public virtual void GameOver()
     {
+        onGameOver?.Invoke();
+    }
 
+    public virtual void LevelEnd()
+    {
+        onLevelEnd?.Invoke();   
     }
 }

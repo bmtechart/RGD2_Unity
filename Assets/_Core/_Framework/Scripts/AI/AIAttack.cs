@@ -8,25 +8,49 @@ public class AIAttack : AIBehaviour
     public float Damage;
     public Transform target;
 
+
+    public enum AttackState { IDLE, ATTACKING, COMPLETE };
+    public AttackState attackState;
+
     public bool isInRange()
     {
-        if (Vector3.Distance(target.position, transform.position) > AttackRange)
-        {
-            return false;
-        }
+        if (Vector3.Distance(target.position, transform.position) > AttackRange) return false;
 
         return true;
     }
 
-    public Node.Status AttackPlayer()
+    /// <summary>
+    /// Behaviour Tree Attack, not working yet.
+    /// Change to Public once it is working
+    /// </summary>
+    /// <returns></returns>
+    private Node.Status Attack()
     {
-        //start attack
-            //still in range?
-            //trigger attack animation
-        //if target is still in range and within attack arc
-            //damage target
-        if(isInRange()) return Node.Status.SUCCESS;
-        return Node.Status.FAILURE;
+        switch(attackState)
+        {
+            //if attack has played to completion
+            case AttackState.COMPLETE:
+                attackState = AttackState.IDLE; //reset attack state
+                return Node.Status.SUCCESS;
+            //if attack has successfully started and is playing
+            case AttackState.ATTACKING:
+                return Node.Status.RUNNING;
 
+            case AttackState.IDLE:
+               
+                //if we lose target, return failure
+                if (!target) return Node.Status.FAILURE;
+
+                //when starting an attack, if out of range, return failure
+                if (!isInRange()) return Node.Status.FAILURE;
+
+                //update attack state and set node to running
+                attackState = AttackState.ATTACKING;
+                return Node.Status.RUNNING;
+
+            default: 
+                return Node.Status.FAILURE;
+
+        }
     }
 }

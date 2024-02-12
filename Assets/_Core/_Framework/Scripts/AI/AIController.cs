@@ -14,7 +14,7 @@ public class AIController : MonoBehaviour
     #region Behaviour Componenets
     [SerializeField] protected AIMovement aiMovement;
     [SerializeField] protected AIVision aiVision;
-
+    [SerializeField] protected AIAttack aiAttack;
     #endregion
 
     #region Behaviour Tree

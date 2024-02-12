@@ -71,7 +71,7 @@ public class BehaviourTree : Node
 
         foreach (NodeLevel nodeLevel in nodeStack)
         {
-            if(nodeLevel.node.status == Node.Status.RUNNING)
+            if(nodeLevel.node.status == Status.RUNNING)
             {
                 nodePrintout += nodeLevel.node.name + " running!";
             }

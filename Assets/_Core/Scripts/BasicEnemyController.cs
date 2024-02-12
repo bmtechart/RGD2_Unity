@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class BasicEnemyController : AIController
 {
-
-    public GameObject PatrolPointA;
-    public GameObject PatrolPointB;
-
     // Start is called before the first frame update
     public override void Start()
     {
@@ -32,15 +28,6 @@ public class BasicEnemyController : AIController
         return aiMovement.FollowTarget(aiVision.target.gameObject);
     }
 
-    public Node.Status PatrolA()
-    {
-        return aiMovement.GoToLocation(PatrolPointA.transform.position);
-    }
-
-    public Node.Status PatrolB()
-    {
-        return aiMovement.GoToLocation(PatrolPointB.transform.position);
-    }
 
     public Node.Status Attack()
     {
