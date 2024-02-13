@@ -81,14 +81,12 @@ public class AIMovement : AIBehaviour
             if(Vector3.Distance(agent.pathEndPosition, followTarget.transform.position) > pathFailureThreshold)
             {
                 movingState = MovingState.IDLE;
-                Debug.Log("Could no path to follow target");
                 return Node.Status.FAILURE;
             }
 
 
             if (distanceToTarget < pathFailureThreshold)
             {
-                Debug.Log("Successfully pathed to follow target.");
                 movingState = MovingState.IDLE;
                 return Node.Status.SUCCESS;
             }
@@ -111,7 +109,7 @@ public class AIMovement : AIBehaviour
             return;
         }
         float normalizedMoveSpeed = Mathf.InverseLerp(0, agent.speed, agent.velocity.magnitude);
-        Debug.Log("Normalized Move Speed: " + normalizedMoveSpeed.ToString());
+        
         animator.SetFloat("MoveSpeed", normalizedMoveSpeed);
     }
 }

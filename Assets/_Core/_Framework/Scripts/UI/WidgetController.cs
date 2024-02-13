@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WidgetController : MonoBehaviour, IUserInterface
+public class WidgetController : MonoBehaviour, IWidget
 {    
      /// <summary>
      /// Name is used to store the name of this user interface
@@ -15,16 +15,14 @@ public class WidgetController : MonoBehaviour, IUserInterface
     /// </summary>
     private void Awake()
     {
-        gameObject.SetActive(false);
-        if (UIManager.Instance)
+        if (WidgetManager.Instance == null)
         {
-            UIManager.Instance.RegisterWidget(Name, gameObject);
+            Debug.Log("No instance of widget manager exists!");
+            gameObject.SetActive(false);
             return;
-        } 
-        else
-        {
-            Debug.LogWarning("No Instance of UI Manager in scene!");
         }
+
+        WidgetManager.Instance.RegisterWidget(Name, gameObject);
     }
 
     /// <summary>
@@ -50,4 +48,11 @@ public class WidgetController : MonoBehaviour, IUserInterface
     {
 
     }
+
+    public virtual void Start()
+    {
+
+    }
+
+    public virtual void Update() { }
 }

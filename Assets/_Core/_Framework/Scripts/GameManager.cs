@@ -24,12 +24,9 @@ public class GameManager : Singleton<GameManager>
     /// OnLevelStart should be invoked when the player actually starts playing the game.
     /// </summary>
     public UnityEvent OnLevelStart;
-    // Start is called before the first frame update
+   
 
-    override protected void Awake()
-    {
-        base.Awake();
-    }
+
 
     override protected void Start()
     {

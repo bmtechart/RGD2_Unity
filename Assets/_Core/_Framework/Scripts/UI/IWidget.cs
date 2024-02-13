@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IUserInterface
+public interface IWidget
 {
 
     //open is called when the widget is opened
