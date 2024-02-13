@@ -14,6 +14,6 @@ public class LevelEnd : MonoBehaviour
         if(levelEndUI) UIManager.Instance.AddWidgetToViewport(levelEndUI);
         Cursor.visible = true;
         
-        GameManager.Instance.LevelEnd();
+        GameManager.Instance.LevelComplete();
     }
 }

@@ -12,15 +12,18 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Delegate for when the player loses the game.
     /// </summary>
-    public delegate void OnGameOver();
-
-    public static event OnGameOver onGameOver;
+    public UnityEvent OnGameOver;
 
     /// <summary>
     /// Event for when the player completes a level. 
     /// </summary>
-    public delegate void OnLevelEnd();
-    public static event OnLevelEnd onLevelEnd;
+    public UnityEvent OnLevelComplete;
+
+    /// <summary>
+    /// Event for when the level begins. Not to be confused with Start() which is called when the script is created. 
+    /// OnLevelStart should be invoked when the player actually starts playing the game.
+    /// </summary>
+    public UnityEvent OnLevelStart;
     // Start is called before the first frame update
 
     override protected void Awake()
@@ -45,11 +48,16 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public virtual void GameOver()
     {
-        onGameOver?.Invoke();
+        OnGameOver?.Invoke();
     }
 
-    public virtual void LevelEnd()
+    public virtual void LevelComplete()
     {
-        onLevelEnd?.Invoke();   
+        OnLevelComplete?.Invoke();   
+    }
+
+    public virtual void LevelStart()
+    {
+        OnLevelStart?.Invoke();
     }
 }
