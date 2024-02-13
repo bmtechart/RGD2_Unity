@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2571370e5c271c447b67a24e993989bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCapsule: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  PlayerCapsule: {fileID: 1400404834508990501, guid: a4bffeff96b0d484891512f78dc5b4f2, type: 3}
   MainCamera: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   PlayerFollowCamera: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}

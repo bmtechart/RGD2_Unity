@@ -11,7 +11,7 @@ public class LevelEnd : MonoBehaviour
     {
         bool isPlayer = other.tag == "Player";
         if (!isPlayer) return;
-        if(levelEndUI) UIManager.Instance.AddWidgetToViewport(levelEndUI);
+        //if(levelEndUI) UIManager.Instance.AddWidgetToViewport(levelEndUI);
         Cursor.visible = true;
         
         GameManager.Instance.LevelComplete();
