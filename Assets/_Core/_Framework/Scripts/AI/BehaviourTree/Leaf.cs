@@ -21,8 +21,14 @@ public class Leaf : Node
         if (ProcessMethod != null)
         {
             status = ProcessMethod();
+            behaviourTree.runningProcess = this;
             return status;
         }
         return status;
+    }
+
+    public override void AddChild(Node n)
+    {
+        base.AddChild(n);
     }
 }

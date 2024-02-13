@@ -12,6 +12,8 @@ public class BasicEnemyController : AIController
 
         Sequence patrolNode = new Sequence("patrol");
 
+        Tree.AddChild(patrolNode);
+
         Leaf LookForPlayer = new Leaf("LookForPlayer", aiVision.LookForTarget);
         Leaf MoveToPlayer = new Leaf("Move to Player", FollowPlayer);
         Leaf AttackPlayer = new Leaf("Attack Player", Attack);
@@ -20,7 +22,7 @@ public class BasicEnemyController : AIController
         patrolNode.AddChild(AttackPlayer);
 
 
-        Tree.AddChild(patrolNode);
+
     }
 
     public Node.Status FollowPlayer()

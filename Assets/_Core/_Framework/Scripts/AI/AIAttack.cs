@@ -32,6 +32,7 @@ public class AIAttack : AIBehaviour
             case AttackState.COMPLETE:
                 attackState = AttackState.IDLE; //reset attack state
                 return Node.Status.SUCCESS;
+
             //if attack has successfully started and is playing
             case AttackState.ATTACKING:
                 return Node.Status.RUNNING;

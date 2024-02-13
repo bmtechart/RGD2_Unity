@@ -57,8 +57,8 @@ public class AIController : MonoBehaviour
 
         if(ShowDebug)
         {
-            string DebugMessage = Tree.children[Tree.currentChild].name;
-            AIDebugObject.GetComponent<TextMeshPro>().text = Tree.GetCurrentNodeStatus();
+            string DebugMessage = Tree.runningProcess.name;
+            AIDebugObject.GetComponent<TextMeshPro>().text = DebugMessage;
         }
     }
 }

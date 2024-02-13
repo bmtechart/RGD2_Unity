@@ -10,6 +10,8 @@ public class Node
     public Status status;
     public List<Node> children = new List<Node>();
     public int currentChild = 0;
+    public Node runningProcess;
+    public Node behaviourTree;
     public string name;
 
 
@@ -26,5 +28,5 @@ public class Node
         if (status == Status.RUNNING) { Debug.Log(name + " running!"); }
         return children[currentChild].Process(); 
     }  
-    public void AddChild(Node n) { children.Add(n); }
+    public virtual void AddChild(Node n) { children.Add(n); }
 }
