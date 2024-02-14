@@ -8,7 +8,8 @@ public class BasicEnemyController : AIController
     public override void Start()
     {
         if(!aiMovement) aiMovement = GetComponent<AIMovement>();
-        if(!aiVision) aiVision = GetComponentInChildren<AIVision>(); 
+        if(!aiVision) aiVision = GetComponentInChildren<AIVision>();
+        if (!aiAttack) aiAttack = GetComponent<AIAttack>();
 
         Sequence patrolNode = new Sequence("patrol");
 
@@ -20,25 +21,26 @@ public class BasicEnemyController : AIController
         patrolNode.AddChild(LookForPlayer);
         patrolNode.AddChild(MoveToPlayer);
         patrolNode.AddChild(AttackPlayer);
-
-
-
     }
 
     public Node.Status FollowPlayer()
     {
-        return aiMovement.FollowTarget(aiVision.target.gameObject);
+        AIMovement movement = GetAIBehaviour<AIMovement>("Movement");
+        return movement.FollowTarget(aiVision.target.gameObject);
     }
 
 
     public Node.Status Attack()
     {
-        return Node.Status.SUCCESS;
+        AIAttack attack = GetAIBehaviour<AIAttack>("MeleeAttack");
+        return attack.Attack(aiVision.target);
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
+        //process behaviour tree
+        Tree.Process();
     }
 }

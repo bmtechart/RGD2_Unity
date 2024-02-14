@@ -3164,9 +3164,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 85889674708995733, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      propertyPath: ShowDebug
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1190350809446383469, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
       propertyPath: m_Name
       value: PF_PeonEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295729183406135075, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      propertyPath: Name
+      value: Movement
       objectReference: {fileID: 0}
     - target: {fileID: 6320949083472437517, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3208,14 +3216,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7099358511522246797, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1190350809446383469, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2108498740}
     - targetCorrespondingSourceObject: {fileID: 6426320849980622498, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+--- !u!1 &1162161892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1190350809446383469, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+  m_PrefabInstance: {fileID: 1887303761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1162161898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162161892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6025e3c52ccb94b855235cdf02d038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: MeleeAttack
+  AttackRange: 2
+  Damage: 1
+  target: {fileID: 0}
+  attackState: 0
 --- !u!1 &1179265483
 GameObject:
   m_ObjectHideFlags: 0
@@ -3952,63 +3989,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1501343227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1454175812
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -13.455757
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -24.381918
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767848454384406114, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7274696225904522075, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
-      propertyPath: m_Name
-      value: PF_PauseMenuExample
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4dbe4033740092a4ba77b6731a694beb, type: 3}
 --- !u!1 &1482556459
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,9 +4917,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 85889674708995733, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      propertyPath: ShowDebug
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1190350809446383469, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
       propertyPath: m_Name
       value: PF_PeonEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295729183406135075, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      propertyPath: Name
+      value: Movement
       objectReference: {fileID: 0}
     - target: {fileID: 6320949083472437517, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4981,10 +4969,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7099358511522246797, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1190350809446383469, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1162161898}
     - targetCorrespondingSourceObject: {fileID: 6426320849980622498, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -5418,6 +5413,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1818223853}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2108498734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1190350809446383469, guid: b5b5e4278bbd82f4fa949233c6127698, type: 3}
+  m_PrefabInstance: {fileID: 1154519370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2108498740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108498734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6025e3c52ccb94b855235cdf02d038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: MeleeAttack
+  AttackRange: 2
+  Damage: 1
+  target: {fileID: 0}
+  attackState: 0
 --- !u!1 &2119073784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,5 +5808,4 @@ SceneRoots:
   - {fileID: 1213135138}
   - {fileID: 1887303761}
   - {fileID: 1154519370}
-  - {fileID: 1454175812}
   - {fileID: 689715785}

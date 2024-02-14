@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AIAttack : AIBehaviour
 {
@@ -9,8 +10,10 @@ public class AIAttack : AIBehaviour
     public Transform target;
 
 
+    public UnityEvent StartAttack;
+
     public enum AttackState { IDLE, ATTACKING, COMPLETE };
-    public AttackState attackState;
+    private AttackState attackState;
 
     public bool isInRange()
     {
@@ -24,12 +27,23 @@ public class AIAttack : AIBehaviour
     /// Change to Public once it is working
     /// </summary>
     /// <returns></returns>
-    private Node.Status Attack()
+    public Node.Status Attack(Transform attackTarget)
     {
+        if (!target) target = attackTarget;
         switch(attackState)
         {
             //if attack has played to completion
             case AttackState.COMPLETE:
+
+                if(isInRange())
+                {
+                    //update attack state and set node to running
+                    attackState = AttackState.ATTACKING;
+                    _animator.ResetTrigger("Attack");
+                    _animator.SetTrigger("Attack");
+                    return Node.Status.RUNNING;
+                }
+
                 attackState = AttackState.IDLE; //reset attack state
                 return Node.Status.SUCCESS;
 
@@ -47,11 +61,27 @@ public class AIAttack : AIBehaviour
 
                 //update attack state and set node to running
                 attackState = AttackState.ATTACKING;
+                _animator.ResetTrigger("Attack");
+                _animator.SetTrigger("Attack");
                 return Node.Status.RUNNING;
 
             default: 
                 return Node.Status.FAILURE;
 
         }
+    }
+
+    public void AttackComplete()
+    {
+        attackState = AttackState.COMPLETE;
+    }
+
+    public virtual void AttackHit() 
+    {
+        IDamageable damageTarget = target.gameObject.GetComponent<IDamageable>();
+
+        if (damageTarget == null) return;
+
+        damageTarget.Damage(Damage);
     }
 }

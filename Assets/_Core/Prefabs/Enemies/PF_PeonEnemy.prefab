@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 85889674708995733}
   - component: {fileID: 7099358511522246797}
   - component: {fileID: 5295729183406135075}
+  - component: {fileID: 1609398719046865025}
+  - component: {fileID: -3494895085839706848}
   m_Layer: 0
   m_Name: PF_PeonEnemy
   m_TagString: Untagged
@@ -78,6 +80,7 @@ MonoBehaviour:
   aiMovement: {fileID: 0}
   aiVision: {fileID: 0}
   aiAttack: {fileID: 0}
+  Animator: {fileID: 6377270882095815296}
 --- !u!195 &7099358511522246797
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -112,10 +115,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc84bbb5c69b51f4388e0edea995629d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Movement
   animator: {fileID: 6377270882095815296}
   followTargetDifferenceThreshold: 0
   pathFailureThreshold: 2
+--- !u!114 &1609398719046865025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190350809446383469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6025e3c52ccb94b855235cdf02d038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: MeleeAttack
+  AttackRange: 2
+  Damage: 0
+  target: {fileID: 0}
+  StartAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6377270882095815296}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Attack
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-3494895085839706848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190350809446383469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5471e470bdf69b9488f052d8b8fee8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &4211818210596201991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,7 +178,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8847544265701305701, guid: 8fa36043b495c9f4aae9fdcb74798a4c, type: 3}
       propertyPath: viewAngle
-      value: 104
+      value: 232
       objectReference: {fileID: 0}
     - target: {fileID: -8847544265701305701, guid: 8fa36043b495c9f4aae9fdcb74798a4c, type: 3}
       propertyPath: viewRadius
@@ -135,6 +187,14 @@ PrefabInstance:
     - target: {fileID: -8847544265701305701, guid: 8fa36043b495c9f4aae9fdcb74798a4c, type: 3}
       propertyPath: targetMask.m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 653336756282181579, guid: 8fa36043b495c9f4aae9fdcb74798a4c, type: 3}
+      propertyPath: Name
+      value: Vision
+      objectReference: {fileID: 0}
+    - target: {fileID: 653336756282181579, guid: 8fa36043b495c9f4aae9fdcb74798a4c, type: 3}
+      propertyPath: drawDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3879555921135704876, guid: 8fa36043b495c9f4aae9fdcb74798a4c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -245,13 +305,51 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1045401375514670, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8137124800328283896}
   m_SourcePrefab: {fileID: 100100000, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
 --- !u!95 &6377270882095815296 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95389170962898660, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
   m_PrefabInstance: {fileID: 6472374041975637092}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6472177543587325002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1045401375514670, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
+  m_PrefabInstance: {fileID: 6472374041975637092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8137124800328283896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472177543587325002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4a94afaa3f5f44c85fdcff34ed1caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAttackComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1609398719046865025}
+        m_TargetAssemblyTypeName: AIAttack, Assembly-CSharp
+        m_MethodName: AttackComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttackHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &6475303576948947886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4111819248598986, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
