@@ -19,7 +19,7 @@ public class AIMovement : AIBehaviour
 
     [Tooltip("The min distance from the target position. If the nav mesh path ends further than this distance, then the pathing fails.")]
     [SerializeField]
-    private float pathFailureThreshold = 2.0f;
+    private float pathFailureThreshold = .5f;
 
     [Tooltip("The max angle difference between the front face of this game object and the path target.")]
     [SerializeField]

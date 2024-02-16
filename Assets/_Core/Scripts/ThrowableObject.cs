@@ -29,4 +29,8 @@ public class ThrowableObject : MonoBehaviour
         _rigidbody.constraints = RigidbodyConstraints.None;
         _collider.enabled = true;
     }
+
+    //on collision enter,
+        //if collision object is damageable
+        //damage it
 }

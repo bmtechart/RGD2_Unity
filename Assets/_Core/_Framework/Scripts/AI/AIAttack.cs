@@ -35,6 +35,7 @@ public class AIAttack : AIBehaviour
             //if attack has played to completion
             case AttackState.COMPLETE:
 
+                //if still in range, keep attacking
                 if(isInRange())
                 {
                     //update attack state and set node to running
@@ -61,6 +62,7 @@ public class AIAttack : AIBehaviour
 
                 //update attack state and set node to running
                 attackState = AttackState.ATTACKING;
+                StartAttack?.Invoke();
                 _animator.ResetTrigger("Attack");
                 _animator.SetTrigger("Attack");
                 return Node.Status.RUNNING;
