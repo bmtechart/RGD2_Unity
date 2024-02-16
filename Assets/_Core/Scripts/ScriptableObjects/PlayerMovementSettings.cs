@@ -11,7 +11,7 @@ public class PlayerMovementSettings : ScriptableObject
 	[Tooltip("Rotation speed of the character")]
 	public float RotationSpeed = 1.0f;
 	[Tooltip("Acceleration and deceleration")]
-	public float SpeedChangeRate = 10.0f;
+	public float Acceleration = 4.0f;
 
 	[Space(10)]
 	[Tooltip("The height the player can jump")]
