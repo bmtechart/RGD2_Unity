@@ -13,7 +13,8 @@ public class LevelEnd : MonoBehaviour
         if (!isPlayer) return;
         //if(levelEndUI) UIManager.Instance.AddWidgetToViewport(levelEndUI);
         Cursor.visible = true;
-        
+        Cursor.lockState = CursorLockMode.Confined;
+        Instantiate(levelEndUI);
         GameManager.Instance.LevelComplete();
     }
 }
