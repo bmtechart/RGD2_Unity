@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5591248312985541827}
   - component: {fileID: 2484853266706236854}
   - component: {fileID: 8484330610257119372}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: ThrowableObject_Computer
   m_TagString: HeavyThrowable
   m_Icon: {fileID: 0}
