@@ -290,8 +290,8 @@ MonoBehaviour:
   OnStaggerEnd:
     m_PersistentCalls:
       m_Calls: []
-  collisionSpeedThreshold: 0
-  _animator: {fileID: 0}
+  collisionSpeedThreshold: 1
+  _animator: {fileID: 8797818196535951889}
   agent: {fileID: 0}
   healthBehaviour: {fileID: 0}
   _fallAudio: {fileID: 11400000, guid: 99765bc7f14a7504f8434cda3178a2b4, type: 2}

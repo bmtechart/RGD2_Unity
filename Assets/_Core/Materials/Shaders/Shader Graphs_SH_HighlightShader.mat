@@ -47,7 +47,7 @@ Material:
     - _Cull: 0
     - _DstBlend: 0
     - _FadeDistance: 75
-    - _OutlineBlend: 0
+    - _OutlineBlend: 1
     - _OutlineThickness: 0.01
     - _PulseSpeed: 9.23
     - _QueueControl: 0

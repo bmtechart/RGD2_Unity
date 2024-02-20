@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectHighlight : MonoBehaviour
@@ -17,25 +18,66 @@ public class ObjectHighlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastForHighlight();
+    }
+
+    private void RaycastForHighlight()
+    {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, rayMask)) 
+        bool hitSuccessful = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, rayMask);
+
+        if (!hitSuccessful)
         {
-            Debug.Log("Hit highlightable object");
-            highlightObject = hit.transform.gameObject;
-            MeshRenderer mr = highlightObject.GetComponent<MeshRenderer>();
-
-            List<Material> materialList = new List<Material>();
-
-            if (mr.materials.Length == 1)
+            if (highlightObject)
             {
-                if (!highlightMaterial) return;
-                
-                mr.GetMaterials(materialList);
-                
-                materialList.Add(highlightMaterial);
-                mr.SetMaterials(materialList);
-                mr.materials[1].SetFloat("_OutlineBlend", 1.0f);
+                RemoveHighlight(highlightObject);
+                highlightObject = null;
+                return;
+            }
+
+            if (!highlightObject) return;
+        }
+
+        if (hitSuccessful)
+        {
+            GameObject newHighlightObject = hit.transform.gameObject;
+            if (highlightObject)
+            {
+                //if looking at an already highlighted object
+                if (highlightObject == newHighlightObject) return;
+
+                //if looking at a new highlighted object
+                if (highlightObject != newHighlightObject)
+                {
+                    RemoveHighlight(highlightObject);
+                    AddHighlight(newHighlightObject);
+                    highlightObject = newHighlightObject;
+                }
+            }
+
+            if (!highlightObject)
+            {
+                highlightObject = newHighlightObject;
+                AddHighlight(highlightObject);
             }
         }
+    }
+
+    private void AddHighlight(GameObject obj)
+    {
+        Debug.Log("Highlight added!");
+        List<Material> mats = new List<Material>();
+        obj.GetComponent<MeshRenderer>().GetMaterials(mats);
+        mats.Add(highlightMaterial);
+        obj.GetComponent<MeshRenderer>().SetMaterials(mats);
+    }
+
+    private void RemoveHighlight(GameObject obj)
+    {
+        Debug.Log("Highlight Removed");
+        List<Material> mats = new List<Material>();
+        obj.GetComponent<MeshRenderer>().GetMaterials(mats);
+        mats.RemoveAt(1);
+        obj.GetComponent<MeshRenderer>().SetMaterials(mats);
     }
 }
