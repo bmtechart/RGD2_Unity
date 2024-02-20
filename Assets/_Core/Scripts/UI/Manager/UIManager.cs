@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,19 +16,66 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI inGameScoreText; // For displaying score in-game
     public TextMeshProUGUI inGameTimerText; // For displaying timer in-game
 
+    [Header("Health UI")]
+    public Slider sliderHealthBar; // Reference to the health bar slider
+    public Color healthColorGreen = Color.green;
+    public Color healthColorYellow = Color.yellow;
+    public Color healthColorRed = Color.red;
+    private Image healthBarFill; // To change the color of the health bar
+
+
     private int score = 0;
     private float timer = 0f;
     private bool gameIsPaused = false;
+    private float health = 100f; // Player's starting health
 
     void Start()
     {
         ResetGameUI();
+
+        if (sliderHealthBar != null)
+        {
+            healthBarFill = sliderHealthBar.fillRect.GetComponent<Image>();
+        }
+        UpdateHealthBar();
     }
 
     void Update()
     {
         HandleGameTimer();
         CheckPauseInput();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        UpdateHealthBar();
+
+        if (health <= 0)
+        {
+            PlayerLost(); // Assuming player's death means losing the game
+        }
+    }
+    void UpdateHealthBar()
+    {
+        sliderHealthBar.value = health / 100f;
+        UpdateHealthBarColor();
+    }
+
+    void UpdateHealthBarColor()
+    {
+        if (health > 50)
+        {
+            healthBarFill.color = healthColorGreen;
+        }
+        else if ((health > 25) && (health <= 50))
+        {
+            healthBarFill.color = healthColorYellow;
+        }
+        else
+        {
+            healthBarFill.color = healthColorRed;
+        }
     }
 
     public void AddScore(int points)
