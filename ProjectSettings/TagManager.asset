@@ -8,8 +8,6 @@ TagManager:
   - Food
   - TriggerPhysics
   - LightCannon
-  - ThrowableObject
-  - HeavyThrowable
   layers:
   - Default
   - TransparentFX
@@ -18,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Player
-  - Environment
-  - 
+  - Enemy
+  - EnemyProjectile
   - 
   - 
   - 

@@ -19,20 +19,25 @@ public class AIMovement : AIBehaviour
 
     [Tooltip("The min distance from the target position. If the nav mesh path ends further than this distance, then the pathing fails.")]
     [SerializeField]
-    private float pathFailureThreshold = 2.0f;
+    private float pathFailureThreshold = .5f;
 
+    /*
+    [Tooltip("The max angle difference between the front face of this game object and the path target.")]
+    [SerializeField]
+    private float MaxRotationDeviation = 0.0f;
+    */
     private NavMeshAgent agent;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         movingState = MovingState.IDLE;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        UpdateAnimator();
+        if(animator) UpdateAnimator();
     }
 
     //movement function to use in our behaviour tree
@@ -101,13 +106,9 @@ public class AIMovement : AIBehaviour
         return Node.Status.RUNNING;
     }
 
+
     public void UpdateAnimator()
     {
-        if (!animator)
-        {
-            Debug.Log("No animator assigned to movement component!");
-            return;
-        }
         float normalizedMoveSpeed = Mathf.InverseLerp(0, agent.speed, agent.velocity.magnitude);
         
         animator.SetFloat("MoveSpeed", normalizedMoveSpeed);

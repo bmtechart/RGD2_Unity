@@ -4,39 +4,76 @@ using UnityEngine;
 
 public class BasicEnemyController : AIController
 {
+    private Transform target;
+
+    AIVision aiVision;
+    AIMovement aiMovement;
+    AIAttack aiAttack;
+
     // Start is called before the first frame update
     public override void Start()
     {
-        if(!aiMovement) aiMovement = GetComponent<AIMovement>();
-        if(!aiVision) aiVision = GetComponentInChildren<AIVision>(); 
+
+        aiVision = GetAIBehaviour<AIVision>("Vision");
+        aiMovement = GetAIBehaviour<AIMovement>("Movement");
+        aiAttack = GetAIBehaviour<AIAttack>("MeleeAttack");
 
         Sequence patrolNode = new Sequence("patrol");
 
-        Leaf LookForPlayer = new Leaf("LookForPlayer", aiVision.LookForTarget);
+        Tree.AddChild(patrolNode);
+
+        Leaf LookForPlayer = new Leaf("LookForPlayer", LookForTarget);
         Leaf MoveToPlayer = new Leaf("Move to Player", FollowPlayer);
         Leaf AttackPlayer = new Leaf("Attack Player", Attack);
         patrolNode.AddChild(LookForPlayer);
         patrolNode.AddChild(MoveToPlayer);
         patrolNode.AddChild(AttackPlayer);
+    }
 
+    public Node.Status LookForTarget() 
+    {
+        
+        if(!aiVision)
+        {
+            Debug.Log("No AI Vision component assigned to prefab!");
+            return Node.Status.FAILURE;
+        }
 
-        Tree.AddChild(patrolNode);
+        Node.Status returnStatus = aiVision.LookForTarget();
+
+        if (returnStatus == Node.Status.SUCCESS)
+        {
+            target = aiVision.Target;
+            Animator.SetLayerWeight(Animator.GetLayerIndex("Aggro"), 1.0f);
+        }
+
+        return aiVision.LookForTarget();
     }
 
     public Node.Status FollowPlayer()
     {
-        return aiMovement.FollowTarget(aiVision.target.gameObject);
+        if(!aiMovement)
+        {
+            Debug.Log("No AI Movement component assigned to prefab!");
+            return Node.Status.FAILURE;
+        }
+
+        if(target) return aiMovement.FollowTarget(target.gameObject);
+
+        return Node.Status.FAILURE;
     }
 
 
     public Node.Status Attack()
     {
-        return Node.Status.SUCCESS;
+        return aiAttack.Attack(aiVision.Target);
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
+        //process behaviour tree
+        Tree.Process();
     }
 }

@@ -24,4 +24,10 @@ public class Sequence : Node
         return Status.RUNNING;
     }
 
+    public override void AddChild(Node n)
+    {
+        base.AddChild(n);
+        n.behaviourTree = behaviourTree;
+    }
+
 }
