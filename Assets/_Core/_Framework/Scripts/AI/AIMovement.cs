@@ -21,20 +21,21 @@ public class AIMovement : AIBehaviour
     [SerializeField]
     private float pathFailureThreshold = .5f;
 
+    /*
     [Tooltip("The max angle difference between the front face of this game object and the path target.")]
     [SerializeField]
     private float MaxRotationDeviation = 0.0f;
-
+    */
     private NavMeshAgent agent;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         movingState = MovingState.IDLE;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         if(animator) UpdateAnimator();
     }

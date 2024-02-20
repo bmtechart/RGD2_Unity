@@ -6,10 +6,15 @@ using UnityEngine;
 public class AIVision : AIBehaviour
 {
     private FieldOfView fieldOfView;
-    [SerializeField] bool drawDebug;
-    public Transform target;
 
-    private void Start()
+    [Tooltip("Toggle debug display.")]
+    [SerializeField] bool drawDebug;
+    
+    private Transform _target;
+
+    public Transform Target { get { return _target; } }
+
+    protected override void Start()
     {
         fieldOfView = GetComponent<FieldOfView>();
         if (!fieldOfView) Debug.Log("Warning! Vision component has no field of view component!");
@@ -17,17 +22,15 @@ public class AIVision : AIBehaviour
 
     public Node.Status LookForTarget()
     {
-        fieldOfView.FindVisibleTargets();
-        target = fieldOfView.visibleTargets[0]; 
-
-        if(!drawDebug) return CanSeeTarget();
+        List <Transform> visibleTargets = fieldOfView.FindVisibleTargets();
+        if (visibleTargets.Count > 0) _target = visibleTargets[0];
 
         return CanSeeTarget();
     }
 
     public Node.Status CanSeeTarget()
     {
-        if (fieldOfView.visibleTargets.Count <= 0) return Node.Status.FAILURE;
+        if (!Target) return Node.Status.FAILURE;
         return Node.Status.SUCCESS;
     }
 }

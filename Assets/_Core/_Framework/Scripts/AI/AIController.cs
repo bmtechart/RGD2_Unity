@@ -2,27 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
     #region Debug
     [SerializeField] private bool ShowDebug;
-    [SerializeField] private GameObject AIDebugObject;
+
+    [Tooltip("The location of the debug message in world space.")]
+    [SerializeField] private Transform DebugRoot;
     #endregion
 
     #region Behaviour Componenets
     public Dictionary<string, AIBehaviour> Behaviours = new Dictionary<string, AIBehaviour>();
 
-
-    [SerializeField] protected AIMovement aiMovement;
-    [SerializeField] protected AIVision aiVision;
-    [SerializeField] protected AIAttack aiAttack;
     #endregion
 
     #region Behaviour Tree
     protected BehaviourTree Tree;
+    /*
     Node.Status treeStatus = Node.Status.RUNNING;
+    */
     #endregion
 
     public Animator Animator;
@@ -31,11 +32,29 @@ public class AIController : MonoBehaviour
     private void Awake()
     {
         Tree = new BehaviourTree();
-        if (!AIDebugObject)
+    }
+
+    public virtual void DebugBehaviourTree()
+    {
+        if (Tree == null) return;
+        if (ShowDebug && Tree.runningProcess != null)
         {
-            Debug.Log("Warning, cannot debug AI Controller without AI Debug Object.");
-            Debug.Log("Check prefabs folder of _Framework for PF_AIDebug.");
+            string DebugMessage = Tree.runningProcess.name + Tree.runningProcess.status;
+
+            Vector3 DebugMessageLocation = new Vector3();
+
+            DebugMessageLocation = transform.position;
+
+            if (DebugRoot) DebugMessageLocation = DebugRoot.position;
+
+            Handles.Label(DebugMessageLocation, DebugMessage);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow; 
+        if (ShowDebug) DebugBehaviourTree();
     }
 
     public void RegisterBehaviour(string name, AIBehaviour behaviour)
@@ -85,10 +104,6 @@ public class AIController : MonoBehaviour
     {
         //treeStatus = Tree.Process();
 
-        if(ShowDebug && Tree.runningProcess != null)
-        {
-            string DebugMessage = Tree.runningProcess.name + Tree.runningProcess.status;
-            AIDebugObject.GetComponent<TextMeshPro>().text = DebugMessage;
-        }
+        
     }
 }

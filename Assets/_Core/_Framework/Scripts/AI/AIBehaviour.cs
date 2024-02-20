@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class AIBehaviour : MonoBehaviour
 {
-    public string Name;
+    [SerializeField]
+    protected string BehaviourName;
 
     protected Animator _animator;
     public Animator Animator 
@@ -19,13 +20,13 @@ public class AIBehaviour : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
     }
@@ -39,6 +40,6 @@ public class AIBehaviour : MonoBehaviour
             return;
         }
 
-        controller.RegisterBehaviour(Name, this);
+        controller.RegisterBehaviour(BehaviourName, this);
     }
 }
