@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1400404834508990501}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,8 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushLayers:
     serializedVersion: 2
-    m_Bits: 0
-  canPush: 0
+    m_Bits: 8
+  canPush: 1
   strength: 1.1
 --- !u!114 &8973805262930043755
 MonoBehaviour:
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33088769710b42445b528726b5a929fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovementSettings: {fileID: 11400000, guid: 9baaa35a25794054c986a6ba2d994bfd, type: 2}
+  playerMovementSettings: {fileID: 11400000, guid: 0f9712508c1fa23498fbb4f54ba2d032, type: 2}
   CinemachineCameraTarget: {fileID: 5794869422435332949}
 --- !u!114 &737182789555197433
 MonoBehaviour:
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164427962d9b84447b1079d23df07371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerThrowSettings: {fileID: 11400000, guid: 745d394a09ff34245a5cc1e9a18ba1ea, type: 2}
+  playerThrowSettings: {fileID: 11400000, guid: e0d4f74086c63384d836777b95c295d6, type: 2}
 --- !u!1 &5794869422435332949
 GameObject:
   m_ObjectHideFlags: 0
