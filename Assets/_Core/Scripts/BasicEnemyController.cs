@@ -45,6 +45,13 @@ public class BasicEnemyController : AIController
         Gizmos.DrawLine(lineStart, lineEnd);
     }
 
+    /// <summary>
+    /// This function accesses the ai vision script to determine if the player is in range of this enemy.
+    /// </summary>
+    /// <returns>
+    /// Returns a node state for the behaviour tree. 
+    /// Success if a player is visible, failure if a player is not visible. 
+    /// </returns>
     public Node.Status LookForTarget() 
     {
         
@@ -65,6 +72,10 @@ public class BasicEnemyController : AIController
         return aiVision.LookForTarget();
     }
 
+    /// <summary>
+    /// Accesses the ai movement script to rotate the enemy to face the player
+    /// </summary>
+    /// <returns>Returns success if facing the player, running if rotating, and failure if no player is available.</returns>
     public Node.Status FacePlayer()
     {
         if (!aiMovement)
@@ -78,6 +89,14 @@ public class BasicEnemyController : AIController
         return Node.Status.FAILURE;
     }
 
+
+    /// <summary>
+    /// Uses the ai movement script to set the destination of a navmesh agent. 
+    /// For use with a behaviour tree. 
+    /// </summary>
+    /// <returns>Returns success if the player has been reached, 
+    /// failure if the player cannot be reached, 
+    /// and running if en route to player.</returns>
     public Node.Status FollowPlayer()
     {
         if(!aiMovement)
@@ -91,7 +110,15 @@ public class BasicEnemyController : AIController
         return Node.Status.FAILURE;
     }
 
-
+    /// <summary>
+    /// Triggers the ai attack script.
+    /// Runs whatever attack ability is assigned to the ai attack script.
+    /// </summary>
+    /// <returns>
+    /// Success if the attack has a been completed.
+    /// Running if the attack is currenlty being executed.
+    /// Failure if no valid target to attack. 
+    /// </returns>
     public Node.Status Attack()
     {
         return aiAttack.Attack(aiVision.Target);
@@ -101,7 +128,7 @@ public class BasicEnemyController : AIController
     public override void Update()
     {
         base.Update();
-        //process behaviour tree
+        //continually run the behaviour tree. 
         Tree.Process();
     }
 }
