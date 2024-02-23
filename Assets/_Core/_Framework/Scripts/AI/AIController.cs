@@ -51,11 +51,13 @@ public class AIController : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow; 
         if (ShowDebug) DebugBehaviourTree();
     }
+#endif
 
     public void RegisterBehaviour(string name, AIBehaviour behaviour)
     {
@@ -102,8 +104,5 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        //treeStatus = Tree.Process();
-
-        
     }
 }
