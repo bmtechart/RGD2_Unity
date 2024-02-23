@@ -186,6 +186,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   followTargetDifferenceThreshold: 0
   pathFailureThreshold: 0.5
+  rotationSpeed: 90
+  MaxRotationDeviation: 15
 --- !u!114 &7179945933963658080
 MonoBehaviour:
   m_ObjectHideFlags: 0
