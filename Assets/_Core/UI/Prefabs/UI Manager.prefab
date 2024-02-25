@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8883960832930683039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8364920449110555674}
+  - component: {fileID: 7897343400237106999}
+  m_Layer: 5
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8364920449110555674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883960832930683039}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7897343400237106999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883960832930683039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c99bf81e040a1d4fa8da1a6e844db5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  losingGamePanel: {fileID: 0}
+  victoryPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
+  inGameScoreText: {fileID: 0}
+  inGameTimerText: {fileID: 0}
+  enemyKillsText: {fileID: 0}
+  sliderHealthBar: {fileID: 0}
+  healthColorGreen: {r: 0, g: 1, b: 0, a: 1}
+  healthColorYellow: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  healthColorRed: {r: 1, g: 0, b: 0, a: 1}
+  reportCardEnemiesKilledText: {fileID: 0}
+  reportCardScoreText: {fileID: 0}
+  reportCardTimeText: {fileID: 0}
+  reportCardPanel: {fileID: 7279441251788815023, guid: 565b572e0b185dd4e99d0d2c305b4d94, type: 3}

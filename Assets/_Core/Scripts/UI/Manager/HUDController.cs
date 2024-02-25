@@ -11,10 +11,9 @@ public class HUDController : MonoBehaviour
     public GameObject pausePanel;
 
     [Header("Text Displays")]
-    public TextMeshProUGUI scoreText; // For displaying score on win/lose panels
-    public TextMeshProUGUI timerText; // For displaying time on win/lose panels
     public TextMeshProUGUI inGameScoreText; // For displaying score in-game
     public TextMeshProUGUI inGameTimerText; // For displaying timer in-game
+    public TextMeshProUGUI enemyKillsText;
 
     [Header("Health UI")]
     public Slider sliderHealthBar; // Reference to the health bar slider
@@ -23,11 +22,18 @@ public class HUDController : MonoBehaviour
     public Color healthColorRed = Color.red;
     private Image healthBarFill; // To change the color of the health bar
 
+    [Header("Report Card")]
+    public TextMeshProUGUI reportCardEnemiesKilledText;
+    public TextMeshProUGUI reportCardScoreText;
+    public TextMeshProUGUI reportCardTimeText;
+
 
     private int score = 0;
     private float timer = 0f;
     private bool gameIsPaused = false;
     private float health = 100f; // Player's starting health
+    public GameObject reportCardPanel; // Reference to the report card panel
+    private int totalEnemiesKilled = 0;
 
     void Start()
     {
@@ -46,7 +52,20 @@ public class HUDController : MonoBehaviour
         CheckPauseInput();
     }
 
-    public void TakeDamage(float damage)
+    public void EnemyKilled()
+    {
+        totalEnemiesKilled++;
+        UpdateKillsDisplay();
+    }
+    void UpdateKillsDisplay()
+    {
+        if (enemyKillsText != null)
+        {
+            enemyKillsText.text = $"Kills: {totalEnemiesKilled}";
+        }
+    }
+
+        public void TakeDamage(float damage)
     {
         health -= damage;
         UpdateHealthBar();
@@ -136,13 +155,18 @@ public class HUDController : MonoBehaviour
         int seconds = (int)time % 60;
         return $"{minutes:00}:{seconds:00}";
     }
+    void ShowReportCard()
+    {
+        UpdateReportCard(); // Assuming this method updates the Text elements within the report card
+        reportCardPanel.SetActive(true); // Show the report card
+    }
 
     public void PlayerLost()
     {
         gameIsPaused = true;
         Time.timeScale = 0f;
-        UpdateScoreDisplay(scoreText, score);
-        UpdateTimerDisplay(timerText, timer);
+        ShowReportCard();
+
         losingGamePanel.SetActive(true);
     }
 
@@ -150,8 +174,7 @@ public class HUDController : MonoBehaviour
     {
         gameIsPaused = true;
         Time.timeScale = 0f;
-        UpdateScoreDisplay(scoreText, score);
-        UpdateTimerDisplay(timerText, timer);
+        ShowReportCard();
         victoryPanel.SetActive(true);
     }
 
@@ -171,19 +194,41 @@ public class HUDController : MonoBehaviour
 
     public void RestartLevel()
     {
+        Debug.Log("Restarting Level");
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void LoadMainMenu()
+    public void Home()
     {
+        Debug.Log("Loading Menu");
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 
     public void LoadNextLevel()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int totalLevels = 4; // Total number of levels in the game
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Check if the next scene index exceeds the total number of levels
+        if (nextSceneIndex < totalLevels)
+        {
+            Time.timeScale = 1f; // Make sure the game is not paused
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            // Optionally, load the main menu or show a game completion message
+            // For example, assuming the main menu is at build index 0
+            SceneManager.LoadScene(0); // Load main menu or a 'Game Completed' scene
+        }
+    }
+    void UpdateReportCard()
+    {
+        reportCardEnemiesKilledText.text = $"Enemies Killed: {totalEnemiesKilled}";
+        reportCardScoreText.text = $"Score: {score}";
+        reportCardTimeText.text = $"Time: {FormatTime(timer)}";
     }
 }
