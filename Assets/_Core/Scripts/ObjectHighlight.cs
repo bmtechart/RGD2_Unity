@@ -4,15 +4,23 @@ using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerThrowController))]
 public class ObjectHighlight : MonoBehaviour
 {
     public LayerMask rayMask;
     public GameObject highlightObject;
     public Material highlightMaterial;
+
+    [SerializeField] private float highlightRange;
+    private PlayerThrowController playerThrowController;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //match highlight range to grab distance
+        playerThrowController = GetComponent<PlayerThrowController>();
+        if (playerThrowController) highlightRange = playerThrowController.playerThrowSettings.GrabDistance;
     }
 
     // Update is called once per frame
@@ -24,7 +32,7 @@ public class ObjectHighlight : MonoBehaviour
     private void RaycastForHighlight()
     {
         RaycastHit hit;
-        bool hitSuccessful = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, rayMask);
+        bool hitSuccessful = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, highlightRange, rayMask);
 
         if (!hitSuccessful)
         {

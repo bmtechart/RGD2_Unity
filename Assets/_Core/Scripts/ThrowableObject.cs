@@ -5,6 +5,10 @@ public class ThrowableObject : MonoBehaviour
     protected Rigidbody _rigidbody;
     protected Collider _collider;
 
+    [SerializeField] protected GameObject collisionParticle;
+    public bool isThrown = false;
+
+
     protected virtual void Start()
     {
         //get rigidbody
@@ -30,7 +34,23 @@ public class ThrowableObject : MonoBehaviour
         _collider.enabled = true;
     }
 
-    //on collision enter,
-        //if collision object is damageable
-        //damage it
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!isThrown) return;
+
+        //spawn particle at collision point
+        if(collisionParticle)
+        {
+            GameObject newParticle = Instantiate(collisionParticle);
+            newParticle.transform.position = collision.contacts[0].point;
+        }
+
+        IDamageable isDamageable = collision.gameObject.GetComponent<IDamageable>();
+        if(isDamageable != null)
+        {
+            isDamageable.Damage(100.0f);
+        }
+        isThrown = false;
+    }
 }

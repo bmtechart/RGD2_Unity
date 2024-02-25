@@ -7,7 +7,17 @@ public class LevelEndScreenController : WidgetController
     public override void Open()
     {
         base.Open();
+        Debug.Log("Level end screen opened");
+    }
 
-        gameObject.SetActive(true);
+    public void QuitGame()
+    {
+        Debug.Log("quit application");
+        Application.Quit();
+
+        if(Application.isEditor)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
     }
 }

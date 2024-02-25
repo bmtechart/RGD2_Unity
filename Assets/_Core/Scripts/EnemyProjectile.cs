@@ -21,8 +21,13 @@ public class EnemyProjectile : MonoBehaviour
         rb.AddForce(Vector3.Normalize(target - transform.position) * force, ForceMode.Impulse);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
+        Invoke("DestroySelf", 3.0f);
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

@@ -54,11 +54,10 @@ namespace Framework
         /// <param name="name">The name of the registered widget you'd like to add to the viewport.</param>
         public GameObject OpenWidget(string name)
         {
-            Debug.Log(Widgets.ToString());
             GameObject widget;
             if(Widgets.TryGetValue(name, out widget))
             {
-                //widget.SetActive(true);
+                widget.SetActive(true);
                 IWidget ui = widget.GetComponent<IWidget>();
                 if(ui != null) ui.Open();
                 return widget;
