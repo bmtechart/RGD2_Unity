@@ -50,6 +50,12 @@ public class BasicEnemyController : AIController
         return aiVision.LookForTarget();
     }
 
+    public Node.Status LookAtPlayer()
+    {
+        if (!aiMovement) return Node.Status.FAILURE;
+
+    }
+
     public Node.Status FollowPlayer()
     {
         if(!aiMovement)
