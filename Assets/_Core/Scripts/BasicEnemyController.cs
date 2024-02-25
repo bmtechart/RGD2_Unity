@@ -14,11 +14,13 @@ public class BasicEnemyController : AIController
     // Start is called before the first frame update
     public override void Start()
     {
-
+        //get references to ai behaviours on this game object
         aiVision = GetAIBehaviour<AIVision>("Vision");
         aiMovement = GetAIBehaviour<AIMovement>("Movement");
         aiAttack = GetAIBehaviour<AIAttack>("MeleeAttack");
 
+
+        //assemble behaviour tree
         Sequence patrolNode = new Sequence("patrol");
 
         Tree.AddChild(patrolNode);

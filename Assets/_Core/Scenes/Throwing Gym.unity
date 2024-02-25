@@ -4102,6 +4102,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3608748294119605281, guid: 42ab6fd29636afa47af1953d8f6f31d5, type: 3}
+      propertyPath: MaxRotationDeviation
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608748294119605281, guid: 42ab6fd29636afa47af1953d8f6f31d5, type: 3}
       propertyPath: pathFailureThreshold
       value: 10
       objectReference: {fileID: 0}
@@ -4112,6 +4116,14 @@ PrefabInstance:
     - target: {fileID: 6987445706797577432, guid: 42ab6fd29636afa47af1953d8f6f31d5, type: 3}
       propertyPath: m_StoppingDistance
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179945933963658080, guid: 42ab6fd29636afa47af1953d8f6f31d5, type: 3}
+      propertyPath: showDebug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338865273353819450, guid: 42ab6fd29636afa47af1953d8f6f31d5, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDeathAnimation
       objectReference: {fileID: 0}
     - target: {fileID: 7415919376298686307, guid: 42ab6fd29636afa47af1953d8f6f31d5, type: 3}
       propertyPath: m_Name
