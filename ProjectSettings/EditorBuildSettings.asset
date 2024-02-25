@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/_Core/Scenes/LoadingScreen.unity
     guid: 1b7a271d993e22d4ab00809e54bc0870
   - enabled: 1
+    path: Assets/_Core/Scenes/LevelSelection.unity
+    guid: 640ded0a5d876e14ea23f184b2d183a9
+  - enabled: 1
     path: Assets/_Core/Scenes/Blockout_Level 1.unity
     guid: b7436da98a534c64797ade544afd3927
   - enabled: 1

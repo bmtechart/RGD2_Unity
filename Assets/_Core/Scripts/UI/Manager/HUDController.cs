@@ -35,6 +35,8 @@ public class HUDController : MonoBehaviour
     public GameObject reportCardPanel; // Reference to the report card panel
     private int totalEnemiesKilled = 0;
 
+    public LevelSelectionManager levelSelectionManager;
+
     void Start()
     {
         ResetGameUI();
@@ -176,6 +178,8 @@ public class HUDController : MonoBehaviour
         Time.timeScale = 0f;
         ShowReportCard();
         victoryPanel.SetActive(true);
+        // Unlock the next level using the LevelSelectionManager singleton
+        LevelSelectionManager.Instance.UnlockNextLevel();
     }
 
     public void PauseGame()
@@ -208,7 +212,7 @@ public class HUDController : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        int totalLevels = 4; // Total number of levels in the game
+        int totalLevels = 4; 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
@@ -221,7 +225,7 @@ public class HUDController : MonoBehaviour
         else
         {
             // Optionally, load the main menu or show a game completion message
-            // For example, assuming the main menu is at build index 0
+            
             SceneManager.LoadScene(0); // Load main menu or a 'Game Completed' scene
         }
     }
