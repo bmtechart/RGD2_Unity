@@ -20,6 +20,8 @@ public class EnemyStaggerBehaviour : MonoBehaviour
 
     [Tooltip("Speed at which an object colliding with the player must")]
     [SerializeField] private float collisionSpeedThreshold;
+    [SerializeField] private float damageFromHit;
+
 
     [Header("Components")]
     [SerializeField] private Animator _animator;
@@ -50,7 +52,7 @@ public class EnemyStaggerBehaviour : MonoBehaviour
         if (collisionSpeed <= collisionSpeedThreshold) return;
 
         AudioSource.PlayClipAtPoint(_hitAudio.GetRandomClip(), collision.transform.position);
-        healthBehaviour.Damage(0.5f);
+        healthBehaviour.Damage(100.0f);
     }
 
     public void TriggerStaggerAnimation()

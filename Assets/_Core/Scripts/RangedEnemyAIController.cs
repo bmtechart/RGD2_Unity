@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RangedEnemyAIController : AIController
 {
-    private Transform target;
+    //componenets
+    [SerializeField] private Transform target;
     private AIVision aiVision;
     private AIMovement aiMovement;
     private AIAttack aiAttack;
+
+    private bool _runBehaviourTree = true;
+
     public override void Start()
     {
         base.Start();
@@ -32,7 +37,7 @@ public class RangedEnemyAIController : AIController
     public override void Update()
     {
         base.Update();
-        Tree.Process();
+        if(_runBehaviourTree) Tree.Process();
     }
 
     public Node.Status CanSeePlayer()
@@ -69,5 +74,16 @@ public class RangedEnemyAIController : AIController
         if (!rangedAttack) return Node.Status.FAILURE;
         rangedAttack.Target = target;
         return aiAttack.Attack(target);
+    }
+
+    public void Die()
+    {
+        CapsuleCollider cc = GetComponent<CapsuleCollider>();
+        if(cc) cc.enabled = false;
+        
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent) agent.isStopped = true;
+
+        _runBehaviourTree = false;
     }
 }

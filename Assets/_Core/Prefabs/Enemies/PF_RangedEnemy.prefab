@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 7338865273353819450}
   - component: {fileID: 3076460266376464761}
   - component: {fileID: 4403446582315066455}
+  - component: {fileID: 4289511011954819105}
   m_Layer: 7
   m_Name: PF_RangedEnemy
   m_TagString: Untagged
@@ -111,6 +112,7 @@ MonoBehaviour:
   ShowDebug: 1
   DebugRoot: {fileID: 180881485172081058}
   Animator: {fileID: 8797818196535951889}
+  target: {fileID: 0}
 --- !u!114 &1613706830416786519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +186,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   followTargetDifferenceThreshold: 0
   pathFailureThreshold: 0.5
+  rotationSpeed: 90
+  MaxRotationDeviation: 15
 --- !u!114 &7179945933963658080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,10 +245,13 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3076460266376464761}
-        m_TargetAssemblyTypeName: EnemyStaggerBehaviour, Assembly-CSharp
-        m_MethodName: PlayDeathAnimation
+      - m_Target: {fileID: 5712968589078441382}
+        m_TargetAssemblyTypeName: RangedEnemyAIController, Assembly-CSharp
+        m_MethodName: Die
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -254,12 +261,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDamage:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 3076460266376464761}
         m_TargetAssemblyTypeName: EnemyStaggerBehaviour, Assembly-CSharp
-        m_MethodName: TriggerStaggerAnimation
+        m_MethodName: PlayDeathAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -290,7 +294,8 @@ MonoBehaviour:
   OnStaggerEnd:
     m_PersistentCalls:
       m_Calls: []
-  collisionSpeedThreshold: 1
+  collisionSpeedThreshold: 0.2
+  damageFromHit: 0
   _animator: {fileID: 8797818196535951889}
   agent: {fileID: 0}
   healthBehaviour: {fileID: 0}
@@ -319,6 +324,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &4289511011954819105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415919376298686307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fe4d4ca52a9114fba89c56331e274a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1497599300091408802
 PrefabInstance:
   m_ObjectHideFlags: 0
