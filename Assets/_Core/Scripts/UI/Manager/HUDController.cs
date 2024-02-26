@@ -183,6 +183,9 @@ public class HUDController : MonoBehaviour
         gameIsPaused = true;
         Time.timeScale = 0f;
         pausePanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
@@ -190,6 +193,9 @@ public class HUDController : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1f;
         pausePanel.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1.0f;
     }
 
     public void RestartLevel()

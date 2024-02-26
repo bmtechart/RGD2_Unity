@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1338.6667
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 54
+  controlID: 134
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2041,7 +2041,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 25.333334}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -2210,7 +2210,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25.333334}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
@@ -2333,9 +2333,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -19.555017, y: 2.950217, z: -22.222294}
+    m_Target: {x: -6.749942, y: -0.25681162, z: 1.7527151}
     speed: 2
-    m_Value: {x: -19.555017, y: 2.950217, z: -22.222294}
+    m_Value: {x: -6.749942, y: -0.25681162, z: 1.7527151}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -2381,20 +2381,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.34830675, y: -0.5264263, z: 0.24921493, w: -0.73384196}
+    m_Target: {x: 0.21282151, y: -0.74958676, z: 0.288429, w: 0.5554789}
     speed: 2
-    m_Value: {x: -0.34971035, y: -0.5229927, z: 0.24758491, w: -0.73680604}
+    m_Value: {x: 0.21293639, y: -0.74999136, z: 0.28858468, w: 0.5557787}
   m_Size:
-    m_Target: 8.129751
+    m_Target: 7.763912
     speed: 2
-    m_Value: 6.99933
+    m_Value: 7.763912
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 1
-    m_SpeedNormalized: 0.5
+    m_Speed: 1.5402294
+    m_SpeedNormalized: 0.76999974
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -2449,9 +2449,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: dee2ffff
-      m_LastClickedID: -7458
-      m_ExpandedIDs: e0e2ffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 8cc4fbff40d2fbff0ae5fbff3cfbfbff320ffcffb21cfcff0826fcff58c4fcff7ec5fcffaed4fcff3ce7fcff72f4fcff1af1ffffdcf6ffff04f7fffff06402006c670200306c02007c6e0200806e0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2650,7 +2650,7 @@ MonoBehaviour:
   m_SerializedViewNames: []
   m_SerializedViewValues: []
   m_PlayModeViewName: GameView
-  m_ShowGizmos: 1
+  m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
   m_TargetSize: {x: 1920, y: 1080}
@@ -2660,7 +2660,7 @@ MonoBehaviour:
   m_EnterPlayModeBehavior: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
@@ -2756,7 +2756,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/StarterAssets
+    - Assets/_Core/_Framework/Scripts/UI
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -2764,16 +2764,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/StarterAssets
+  - Assets/_Core/_Framework/Scripts/UI
   m_LastFoldersGridSize: 96
   m_LastProjectPath: D:\BVC_Student\RapidGameDevelopment\RGD2_Unity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 189.66669}
-    m_SelectedIDs: f6910000
-    m_LastClickedID: 37366
-    m_ExpandedIDs: 00000000fe8f000000900000029000000490000006900000da91000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 049c0100
+    m_LastClickedID: 105476
+    m_ExpandedIDs: 00000000d6800000d8800000dc800000a0820000c0820000d282000002bb000006bb000016bb000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2801,7 +2801,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe8f000000900000029000000490000006900000
+    m_ExpandedIDs: 00000000d6800000d8800000da800000dc800000de800000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
