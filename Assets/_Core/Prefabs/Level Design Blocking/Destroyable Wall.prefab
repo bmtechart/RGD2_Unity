@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroyable Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14d890d1cce1dc2498422e7bbb622d59, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

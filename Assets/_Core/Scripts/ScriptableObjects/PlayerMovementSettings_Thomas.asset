@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f21fd6950060548becfd31cbac1de6, type: 3}
   m_Name: PlayerMovementSettings_Thomas
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
-  SprintSpeed: 9
+  MoveSpeed: 5
+  SprintSpeed: 8
   RotationSpeed: 1
-  SpeedChangeRate: 2.43
+  Acceleration: 2.36
   JumpHeight: 0.74
   Gravity: -17.5
   JumpTimeout: 0.04
@@ -25,6 +25,7 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1024
   TopClamp: 90
   BottomClamp: -90
+  MouseThreshold: 0.001
