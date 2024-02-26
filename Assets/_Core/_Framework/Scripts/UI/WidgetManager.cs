@@ -15,7 +15,7 @@ namespace Framework
         protected override void Start()
         {
             base.Start();
-            //if no event system exists, create one
+            //if no event system exists, create onew
             if(GameObject.Find("EventSystem") == null)
             {
                 var eventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
