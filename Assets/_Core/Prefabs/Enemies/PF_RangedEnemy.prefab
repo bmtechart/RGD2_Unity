@@ -188,6 +188,7 @@ MonoBehaviour:
   pathFailureThreshold: 0.5
   rotationSpeed: 90
   MaxRotationDeviation: 15
+  angle: 0
 --- !u!114 &7179945933963658080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +274,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4403446582315066455}
+        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -301,6 +314,7 @@ MonoBehaviour:
   healthBehaviour: {fileID: 0}
   _fallAudio: {fileID: 11400000, guid: 99765bc7f14a7504f8434cda3178a2b4, type: 2}
   _hitAudio: {fileID: 11400000, guid: 53000a1f1449f564ab2f7f61dd1aea73, type: 2}
+  collisionParticleEffect: []
 --- !u!136 &4403446582315066455
 CapsuleCollider:
   m_ObjectHideFlags: 0

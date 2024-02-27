@@ -139,7 +139,6 @@ public class PlayerThrowController : MonoBehaviour
             //apply velocity
             if (target != null)
             {
-                Debug.Log("object thrown with aim assist");
 
                 //determine modified angles for aim assist
                 float assistedAngleX = Mathf.Rad2Deg * -(Mathf.Asin(Vector3.Distance(new Vector3(target.transform.position.x, 0.0f, target.transform.position.z), new Vector3(HeldObject.transform.position.x, 0.0f, HeldObject.transform.position.z)) * Physics.gravity.y / playerThrowSettings.ThrowVelocity / playerThrowSettings.ThrowVelocity) / 2.0f);
@@ -153,12 +152,11 @@ public class PlayerThrowController : MonoBehaviour
             }
             else
             {
-                Debug.Log("object thrown");
 
                 //apply velocity at default angle
                 HeldObject.GetComponent<Rigidbody>().velocity = playerThrowSettings.ThrowVelocity * (Quaternion.AngleAxis(-playerThrowSettings.ThrowAngle, Camera.main.transform.right) * Camera.main.transform.forward);
             }
-
+            HeldObject.isThrown = true;
             //reset accuracy bonus
             playerThrowSettings.AccuracyBonus = 0.0f;
 

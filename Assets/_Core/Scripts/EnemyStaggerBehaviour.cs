@@ -32,6 +32,9 @@ public class EnemyStaggerBehaviour : MonoBehaviour
     [SerializeField] private AudioArrayScriptableObject _fallAudio;
     [SerializeField] private AudioArrayScriptableObject _hitAudio;
 
+    [Header("Particles")]
+    [SerializeField] private GameObject[] collisionParticleEffect;
+
     private void Awake()
     {
         //get component references
@@ -53,6 +56,13 @@ public class EnemyStaggerBehaviour : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(_hitAudio.GetRandomClip(), collision.transform.position);
         healthBehaviour.Damage(100.0f);
+
+
+        if(collisionParticleEffect.Length > 0)
+        {
+            Instantiate(collisionParticleEffect[0]);
+        }
+        
     }
 
     public void TriggerStaggerAnimation()

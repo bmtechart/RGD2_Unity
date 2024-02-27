@@ -12,14 +12,20 @@ EditorBuildSettings:
     path: Assets/_Core/Scenes/LoadingScreen.unity
     guid: 1b7a271d993e22d4ab00809e54bc0870
   - enabled: 1
+    path: Assets/_Core/Scenes/LevelSelection.unity
+    guid: 640ded0a5d876e14ea23f184b2d183a9
+  - enabled: 1
+    path: Assets/_Core/Scenes/Blockout_Level 1.unity
+    guid: b7436da98a534c64797ade544afd3927
+  - enabled: 1
+    path: Assets/_Core/Scenes/Blockout_Level 2.unity
+    guid: 308579a2044189b44916270bc3d24b89
+  - enabled: 1
+    path: Assets/_Core/Scenes/Blockout_Level 3.unity
+    guid: b028f37a18d70b341b38b805fbaaca6b
+  - enabled: 1
     path: Assets/_Core/Scenes/Blockout_Level 4.unity
     guid: 855b8a29c5a6cec42927a77d1a536711
-  - enabled: 0
-    path: Assets/_Core/Scenes/GameScene.unity
-    guid: 3b9f9def61e84144eac989a0af3093bc
-  - enabled: 1
-    path: Assets/_Core/Scenes/Testing_UI.unity
-    guid: 19dde160fb1ff1e4f9681acc98b60232
   - enabled: 1
     path: Assets/_Core/_Framework/Scenes/PersistentLevel.unity
     guid: d12ee7bf274ad4c40ab405c0657904f6

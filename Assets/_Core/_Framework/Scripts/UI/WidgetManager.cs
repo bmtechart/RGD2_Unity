@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 namespace Framework
@@ -14,9 +15,12 @@ namespace Framework
         protected override void Start()
         {
             base.Start();
-            //Widgets = new Dictionary<string, GameObject>();
+            //if no event system exists, create onew
+            if(GameObject.Find("EventSystem") == null)
+            {
+                var eventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
+            }
         }
-
 
         public void RegisterWidget(string name, GameObject widget)
         {
@@ -54,11 +58,10 @@ namespace Framework
         /// <param name="name">The name of the registered widget you'd like to add to the viewport.</param>
         public GameObject OpenWidget(string name)
         {
-            Debug.Log(Widgets.ToString());
             GameObject widget;
             if(Widgets.TryGetValue(name, out widget))
             {
-                //widget.SetActive(true);
+                widget.SetActive(true);
                 IWidget ui = widget.GetComponent<IWidget>();
                 if(ui != null) ui.Open();
                 return widget;

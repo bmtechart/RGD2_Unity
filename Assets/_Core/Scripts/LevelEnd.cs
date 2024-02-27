@@ -7,14 +7,21 @@ using Framework;
 public class LevelEnd : MonoBehaviour
 {
     public GameObject levelEndUI;
+
+    private void Start()
+    {
+        if(levelEndUI) Instantiate(levelEndUI);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         bool isPlayer = other.tag == "Player";
         if (!isPlayer) return;
-        //if(levelEndUI) UIManager.Instance.AddWidgetToViewport(levelEndUI);
+
+        WidgetManager.Instance.OpenWidget("LevelEndScreen");
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        Instantiate(levelEndUI);
         GameManager.Instance.LevelComplete();
     }
 }

@@ -27,10 +27,12 @@ public class RangedEnemyAIController : AIController
 
         Leaf lookForPlayer = new Leaf("Look for Player", CanSeePlayer);
         Leaf moveInRange = new Leaf("Move In Range", MoveInRangeOfPlayer);
+        Leaf lookAtPlayer = new Leaf("Look At Player", LookAtPlayer);
         Leaf rangedAttack = new Leaf("Ranged Attack", AttackPlayer);
 
         attackSequence.AddChild(lookForPlayer);
         attackSequence.AddChild(moveInRange);
+        attackSequence.AddChild(lookAtPlayer);
         attackSequence.AddChild(rangedAttack);
     }
 
@@ -65,6 +67,13 @@ public class RangedEnemyAIController : AIController
         if(!target) return Node.Status.FAILURE;
         if (!aiMovement) return Node.Status.FAILURE;
         return aiMovement.FollowTarget(target.gameObject);
+    }
+
+    public Node.Status LookAtPlayer()
+    {
+        if (!aiMovement) return Node.Status.FAILURE;
+        if (!target) return Node.Status.FAILURE;
+        return aiMovement.FaceTarget(target.gameObject);
     }
 
     public Node.Status AttackPlayer()

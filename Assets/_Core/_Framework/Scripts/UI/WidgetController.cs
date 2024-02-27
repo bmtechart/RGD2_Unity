@@ -51,7 +51,8 @@ public class WidgetController : MonoBehaviour, IWidget
 
     public virtual void Start()
     {
-
+        gameObject.SetActive(false);
+        WidgetManager.Instance.RegisterWidget(Name, gameObject);
     }
 
     public virtual void Update() { }

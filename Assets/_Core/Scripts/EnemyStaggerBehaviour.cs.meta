@@ -3,7 +3,12 @@ guid: 54bb609e798e50c4287e24e37b4f15a6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _animator: {instanceID: 0}
+  - agent: {instanceID: 0}
+  - healthBehaviour: {instanceID: 0}
+  - _fallAudio: {fileID: 11400000, guid: 99765bc7f14a7504f8434cda3178a2b4, type: 2}
+  - _hitAudio: {fileID: 11400000, guid: 53000a1f1449f564ab2f7f61dd1aea73, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

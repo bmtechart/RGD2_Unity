@@ -57,4 +57,14 @@ public class GameManager : Singleton<GameManager>
     {
         OnLevelStart?.Invoke();
     }
+
+    public void PauseGame()
+    {
+        
+    }
+
+    public void ResumeGame()
+    {
+
+    }
 }
