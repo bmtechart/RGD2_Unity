@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioArrayScriptableObject audioArray;
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySound()
     {
-        
+        AudioSource audioSoucre = gameObject.AddComponent<AudioSource>();
     }
 }

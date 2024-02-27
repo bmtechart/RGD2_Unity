@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80943d8b09acbe849a74180bbf98ab7b, type: 3}
+  m_Name: PunchHitAudioArray
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 468953248ba236c489c40d4bfdc38259, type: 3}
+  - {fileID: 8300000, guid: 85ea629945ddc2b4490bd09ddedb178a, type: 3}
+  - {fileID: 8300000, guid: e8a1b94365cdb0f4faeaf79f26d109ca, type: 3}

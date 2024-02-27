@@ -13,28 +13,33 @@ public class AIMovement : AIBehaviour
     [SerializeField] private Animator animator;
 
     private GameObject followTarget;
+
     [SerializeField]
     [Tooltip("When the follow target deviates from its initial position by this amount, recalculate the path to the target.")]
     private float followTargetDifferenceThreshold;
 
     [Tooltip("The min distance from the target position. If the nav mesh path ends further than this distance, then the pathing fails.")]
     [SerializeField]
-    private float pathFailureThreshold = 2.0f;
+    private float pathFailureThreshold = .5f;
+
+    [Header("Rotation")]
+    [SerializeField] private float rotationSpeed = 90.0f;
 
     [Tooltip("The max angle difference between the front face of this game object and the path target.")]
-    [SerializeField]
-    private float MaxRotationDeviation = 0.0f;
+    [SerializeField] private float MaxRotationDeviation = 15.0f;
+    [SerializeField] private float angle;
+
 
     private NavMeshAgent agent;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         movingState = MovingState.IDLE;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         if(animator) UpdateAnimator();
     }
@@ -103,6 +108,34 @@ public class AIMovement : AIBehaviour
         }
         //default return running
         return Node.Status.RUNNING;
+    }
+
+    public Node.Status FaceTarget(GameObject target)
+    {
+        followTarget = target;
+        if (!followTarget) return Node.Status.FAILURE;
+        float distanceToTarget = Vector3.Distance(followTarget.transform.position, transform.position);
+
+        if (Vector3.Distance(followTarget.transform.position, transform.position) > pathFailureThreshold) return Node.Status.FAILURE;
+
+        Vector3 relativePos = followTarget.transform.position - transform.position;
+
+        angle = Vector3.Angle(relativePos, transform.forward);
+
+        if (angle > MaxRotationDeviation)
+        {
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
+            if (angle < MaxRotationDeviation)
+            {
+                Debug.Log("facing player!");
+                return Node.Status.SUCCESS;
+            }
+            return Node.Status.RUNNING;
+        }
+        Debug.Log("facing player!");
+        return Node.Status.SUCCESS;
     }
 
 

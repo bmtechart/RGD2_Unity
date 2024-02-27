@@ -11,17 +11,22 @@ public class FOVEditor : Editor
     {
         FieldOfView fov = (FieldOfView)target;
         Handles.color = Color.white;
-        Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.viewRadius);
+
+        Transform lookFrom = fov.transform;
+
+        if(fov.viewOrigin) lookFrom = fov.viewOrigin;
+
+        Handles.DrawWireArc(lookFrom.position, Vector3.up, Vector3.forward, 360, fov.viewRadius);
 
         Vector3 viewAngleA = fov.DirFromAngle(-fov.viewAngle/2, false);
         Vector3 viewAngleB = fov.DirFromAngle(fov.viewAngle / 2, false);
-        Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngleA * fov.viewRadius);
-        Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngleB * fov.viewRadius);
+        Handles.DrawLine(lookFrom.position, lookFrom.position + viewAngleA * fov.viewRadius);
+        Handles.DrawLine(lookFrom.position, lookFrom.position + viewAngleB * fov.viewRadius);
 
         Handles.color = Color.red;
-        foreach(Transform t in fov.visibleTargets)
+        foreach(Transform t in fov.VisibleTargets)
         {
-            Handles.DrawLine(fov.transform.position, t.position);
+            Handles.DrawLine(lookFrom.position, t.position);
         }
 
     }

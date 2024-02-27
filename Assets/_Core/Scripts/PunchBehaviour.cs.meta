@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ccab5d3961d271344913150d80dea7b0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _animator: {instanceID: 0}
+  - _punchClipArray: {fileID: 11400000, guid: 4b456949087c908489cf2772b2a0cbd4, type: 2}
+  - _leftHand: {instanceID: 0}
+  - _rightHand: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

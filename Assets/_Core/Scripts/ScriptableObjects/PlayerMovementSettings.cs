@@ -11,7 +11,7 @@ public class PlayerMovementSettings : ScriptableObject
 	[Tooltip("Rotation speed of the character")]
 	public float RotationSpeed = 1.0f;
 	[Tooltip("Acceleration and deceleration")]
-	public float SpeedChangeRate = 10.0f;
+	public float Acceleration = 4.0f;
 
 	[Space(10)]
 	[Tooltip("The height the player can jump")]
@@ -40,4 +40,8 @@ public class PlayerMovementSettings : ScriptableObject
 	public float TopClamp = 90.0f;
 	[Tooltip("How far in degrees can you move the camera down")]
 	public float BottomClamp = -90.0f;
+
+	[Space(10)]
+	[Tooltip("Amount of input required from mouse movement to move the camera")]
+	public float MouseThreshold = 0.001f;
 }

@@ -42,21 +42,43 @@ public class HealthBehaviour : MonoBehaviour, IDamageable
         get { return _health; }
         set
         {
+            //if not already dead, check to see if dead
+            if (!_isDead)
+            {
+                if (_health <= 0.0f) Die();
+            }
+
+            if(!_isDead)
+            {
+                if (_health > value) OnDamage?.Invoke(_health-value);
+                else if (_health < value) OnHeal?.Invoke(value-_health);
+            }
+
             _health = value;
             NormalizedHealth = (float)_health / _maxHealth;
             HealthChanged?.Invoke(NormalizedHealth);
             
             //check for death if not already dead
-            if(!_isDead)
-            {
-                if (_health <= 0.0f) Die();
-            }
+
             
         }
     }
 
+    /// <summary>
+    /// Float broadcasts normalized health value
+    /// </summary>
     public UnityEvent<float> HealthChanged;
     public UnityEvent OnDeath;
+
+    /// <summary>
+    /// Broadcasts the amount of damage done
+    /// </summary>
+    public UnityEvent<float> OnDamage;
+
+    /// <summary>
+    /// Broadcast sthe amount of healing done
+    /// </summary>
+    public UnityEvent<float> OnHeal;
 
     public void Damage(float amount)
     {

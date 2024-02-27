@@ -5,12 +5,15 @@ using UnityEngine.Events;
 
 public class AIAttack : AIBehaviour
 {
+
+    [SerializeField] private bool showDebug;
+
+
     public float AttackRange;
     public float Damage;
     public Transform target;
 
-
-    public UnityEvent StartAttack;
+    public AbilityBase attack;
 
     public enum AttackState { IDLE, ATTACKING, COMPLETE };
     private AttackState attackState;
@@ -22,25 +25,21 @@ public class AIAttack : AIBehaviour
         return true;
     }
 
-    /// <summary>
-    /// Behaviour Tree Attack, not working yet.
-    /// Change to Public once it is working
-    /// </summary>
-    /// <returns></returns>
     public Node.Status Attack(Transform attackTarget)
     {
+        if (!attack) return Node.Status.FAILURE;
         if (!target) target = attackTarget;
         switch(attackState)
         {
             //if attack has played to completion
             case AttackState.COMPLETE:
 
+                //if still in range, keep attacking
                 if(isInRange())
                 {
                     //update attack state and set node to running
                     attackState = AttackState.ATTACKING;
-                    _animator.ResetTrigger("Attack");
-                    _animator.SetTrigger("Attack");
+                    attack.TriggerAbility();
                     return Node.Status.RUNNING;
                 }
 
@@ -61,8 +60,7 @@ public class AIAttack : AIBehaviour
 
                 //update attack state and set node to running
                 attackState = AttackState.ATTACKING;
-                _animator.ResetTrigger("Attack");
-                _animator.SetTrigger("Attack");
+                attack.TriggerAbility();
                 return Node.Status.RUNNING;
 
             default: 
@@ -71,17 +69,17 @@ public class AIAttack : AIBehaviour
         }
     }
 
+    protected override void Start()
+    {
+        base.Start();
+
+        if (attack) attack.abilityComplete += AttackComplete;
+    }
+
     public void AttackComplete()
     {
         attackState = AttackState.COMPLETE;
     }
 
-    public virtual void AttackHit() 
-    {
-        IDamageable damageTarget = target.gameObject.GetComponent<IDamageable>();
 
-        if (damageTarget == null) return;
-
-        damageTarget.Damage(Damage);
-    }
 }
