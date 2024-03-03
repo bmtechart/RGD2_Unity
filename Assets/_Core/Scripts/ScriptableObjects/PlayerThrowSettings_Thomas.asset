@@ -21,7 +21,7 @@ MonoBehaviour:
   ThrowAnimationTime1: 0.5
   ThrowAnimationTime2: 0.5
   HeldObjectPosition: {x: 0.5, y: -0.375, z: 1.25}
-  ChargedObjectPosition: {x: 0.75, y: 0.5, z: 0.5}
+  ChargedObjectPosition: {x: 0.75, y: 0.375, z: 0.5}
   ChargedOffHandPosition: {x: -0.1, y: -0.125, z: 1.325}
   ThrownHandPosition: {x: 0.1, y: -0.125, z: 1.325}
   ThrownOffHandPosition: {x: -0.75, y: -0.625, z: 0}

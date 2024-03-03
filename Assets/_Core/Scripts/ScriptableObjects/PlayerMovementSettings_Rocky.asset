@@ -20,7 +20,7 @@ MonoBehaviour:
   Gravity: -17.5
   JumpTimeout: 0.04
   FallTimeout: 0.15
-  Grounded: 0
+  Grounded: 1
   GroundedOffset: -0.14
   GroundedRadius: 0.5
   GroundLayers:
@@ -28,4 +28,7 @@ MonoBehaviour:
     m_Bits: 1024
   TopClamp: 90
   BottomClamp: -90
+  CameraBobMinFrequency: 1
+  CameraBobMaxFrequency: 3
+  CameraBobIntensity: 0.05
   MouseThreshold: 0.001

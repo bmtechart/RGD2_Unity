@@ -28,4 +28,7 @@ MonoBehaviour:
     m_Bits: 1024
   TopClamp: 90
   BottomClamp: -90
+  CameraBobMinFrequency: 1
+  CameraBobMaxFrequency: 3
+  CameraBobIntensity: 0.05
   MouseThreshold: 0.001
