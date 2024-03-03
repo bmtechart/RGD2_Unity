@@ -61,6 +61,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RangeCM: 0.02
+    - _Roughness: 0
     - _Scale_SN: 105
     - _TextureBlend: 0.37
     - _TextureTile: 1
