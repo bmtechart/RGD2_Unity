@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33088769710b42445b528726b5a929fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMovementSettings: {fileID: 11400000, guid: 0f9712508c1fa23498fbb4f54ba2d032, type: 2}
+  PlayerMovementSettings: {fileID: 11400000, guid: 9baaa35a25794054c986a6ba2d994bfd, type: 2}
   CinemachineCameraTarget: {fileID: 5794869422435332949}
   CameraAnchor: {fileID: 521912012702859094}
 --- !u!114 &737182789555197433
