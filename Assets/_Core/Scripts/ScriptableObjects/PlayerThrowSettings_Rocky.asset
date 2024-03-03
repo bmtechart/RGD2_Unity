@@ -12,12 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5d77dc0d74802469b622822363345b, type: 3}
   m_Name: PlayerThrowSettings_Rocky
   m_EditorClassIdentifier: 
-  GrabDistance: 2
-  GrabSphereCastRadius: 0.1
+  GrabDistance: 3
+  GrabSphereCastRadius: 0.15
   ThrowAngle: 15
   ThrowVelocity: 25
-  HeldObjectPosition: {x: 0.5, y: -0.5, z: 1}
+  GrabAnimationTime: 0.25
+  ThrowAnimationSpeed: 10
+  ThrowAnimationTime1: 0.5
+  ThrowAnimationTime2: 0.5
+  HeldObjectPosition: {x: 0.5, y: -0.375, z: 1.25}
+  ChargedObjectPosition: {x: 0.75, y: 0.5, z: 0.5}
+  ChargedOffHandPosition: {x: -0.1, y: -0.125, z: 1.325}
+  ThrownHandPosition: {x: 0.1, y: -0.125, z: 1.325}
+  ThrownOffHandPosition: {x: -0.75, y: -0.625, z: 0}
   UseAimAssist: 1
   FullAccuracyBonus: 15
-  TimeToFullAccuracy: 1
-  TimeFromFullAccuracy: 1
+  TimeToFullAccuracy: 0.5
+  TimeFromFullAccuracy: 5

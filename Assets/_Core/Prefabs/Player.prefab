@@ -1934,7 +1934,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164427962d9b84447b1079d23df07371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerThrowSettings: {fileID: 11400000, guid: e0d4f74086c63384d836777b95c295d6, type: 2}
+  PlayerThrowSettings: {fileID: 11400000, guid: 745d394a09ff34245a5cc1e9a18ba1ea, type: 2}
+  LeftShoulder: {fileID: 7769432579688888251}
+  RightShoulder: {fileID: 6073051413703493646}
+  LeftHandIKRigTarget: {fileID: 3751186243143229142}
+  RightHandIKRigTarget: {fileID: 6699774996171015399}
 --- !u!114 &3996017454469708383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8568,7 +8572,7 @@ Transform:
   m_GameObject: {fileID: 8010069399103578095}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.75, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
