@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 3076460266376464761}
   - component: {fileID: 4403446582315066455}
   - component: {fileID: 4289511011954819105}
+  - component: {fileID: 5273840738763140614}
   m_Layer: 7
   m_Name: PF_RangedEnemy
   m_TagString: Untagged
@@ -348,6 +349,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66fe4d4ca52a9114fba89c56331e274a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5273840738763140614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415919376298686307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834d6788d38cf9544af54ee6d84e46cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1497599300091408802

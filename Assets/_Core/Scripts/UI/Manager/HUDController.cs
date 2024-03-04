@@ -31,7 +31,7 @@ public class HUDController : MonoBehaviour
     private int score = 0;
     private float timer = 0f;
     private bool gameIsPaused = false;
-    private float health = 100f; // Player's starting health
+    private float health = 1f; // Player's starting health
     public GameObject reportCardPanel; // Reference to the report card panel
     private int totalEnemiesKilled = 0;
 
@@ -63,7 +63,7 @@ public class HUDController : MonoBehaviour
     {
         if (enemyKillsText != null)
         {
-            enemyKillsText.text = $"Kills: {totalEnemiesKilled}";
+            enemyKillsText.text = $"{totalEnemiesKilled}";
         }
     }
 
@@ -79,17 +79,17 @@ public class HUDController : MonoBehaviour
     }
     void UpdateHealthBar()
     {
-        sliderHealthBar.value = health / 100f;
+        sliderHealthBar.value = health / 1f;
         UpdateHealthBarColor();
     }
 
     void UpdateHealthBarColor()
     {
-        if (health > 50)
+        if (health > 0.5f)
         {
             healthBarFill.color = healthColorGreen;
         }
-        else if ((health > 25) && (health <= 50))
+        else if ((health > 0.25f) && (health <= 0.5f))
         {
             healthBarFill.color = healthColorYellow;
         }

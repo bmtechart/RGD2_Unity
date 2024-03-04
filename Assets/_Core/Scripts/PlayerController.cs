@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
             healthBehaviour = GetComponentInChildren<HealthBehaviour>();
 
             healthBehaviour.OnDeath.AddListener(OnPlayerDeath);
+
+            healthBehaviour.OnDamage.AddListener(FindFirstObjectByType<HUDController>().TakeDamage);
         }
     }
 

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 7445760605302837023}
   - component: {fileID: 4683762016035437917}
   - component: {fileID: 9035402105320411612}
+  - component: {fileID: -6499129138675024055}
   m_Layer: 7
   m_Name: PF_PeonEnemy
   m_TagString: Untagged
@@ -306,6 +307,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66fe4d4ca52a9114fba89c56331e274a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6499129138675024055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190350809446383469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834d6788d38cf9544af54ee6d84e46cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2330860395640312815
