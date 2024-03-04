@@ -66,13 +66,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AngleOffset: 1
+    - _AngleOffset: -9.7
     - _CellDensity: 1
-    - _ColorMaskOpacity: 1.64
+    - _ColorMaskOpacity: 1.8
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Roughness: 0
-    - _Scale_SN: 10.54
+    - _Scale_SN: -25.7
     - _TextureBlend: 0.41
     - _TextureTile: 1
     - _TextureU: 10
