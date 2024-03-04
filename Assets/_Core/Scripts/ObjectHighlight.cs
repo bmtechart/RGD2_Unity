@@ -20,7 +20,7 @@ public class ObjectHighlight : MonoBehaviour
     {
         //match highlight range to grab distance
         playerThrowController = GetComponent<PlayerThrowController>();
-        if (playerThrowController) highlightRange = playerThrowController.playerThrowSettings.GrabDistance;
+        if (playerThrowController) highlightRange = playerThrowController.PlayerThrowSettings.GrabDistance;
     }
 
     // Update is called once per frame

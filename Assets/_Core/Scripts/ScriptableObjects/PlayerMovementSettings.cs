@@ -40,6 +40,12 @@ public class PlayerMovementSettings : ScriptableObject
 	public float TopClamp = 90.0f;
 	[Tooltip("How far in degrees can you move the camera down")]
 	public float BottomClamp = -90.0f;
+	[Tooltip("Frequency of camera bob when moving")]
+	public float CameraBobMinFrequency = 0.25f;
+	[Tooltip("Frequency of camera bob when moving")]
+	public float CameraBobMaxFrequency = 0.75f;
+	[Tooltip("Intensity of camera bob when moving")]
+	public float CameraBobIntensity = 0.04f;
 
 	[Space(10)]
 	[Tooltip("Amount of input required from mouse movement to move the camera")]
