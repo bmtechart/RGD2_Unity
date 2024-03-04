@@ -23,7 +23,11 @@ public class AIVision : AIBehaviour
     public Node.Status LookForTarget()
     {
         List <Transform> visibleTargets = fieldOfView.FindVisibleTargets();
-        if (visibleTargets.Count > 0) _target = visibleTargets[0];
+        if (visibleTargets.Count > 0)
+        {
+            _target = visibleTargets[0];
+            return Node.Status.SUCCESS;
+        }
 
         return CanSeeTarget();
     }

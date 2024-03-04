@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47fd89e9594f3f14cac4a5c8bd801002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionParticle: {fileID: 0}
+  isThrown: 0
 --- !u!65 &5785110331714996214
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166,6 +168,6 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1016011637710242029, guid: 5e87ddfd4564feb4689769f649055178, type: 3}

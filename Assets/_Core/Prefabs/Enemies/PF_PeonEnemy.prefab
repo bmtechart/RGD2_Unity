@@ -79,7 +79,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   followTargetDifferenceThreshold: 0
   pathFailureThreshold: 2
   rotationSpeed: 90
-  MaxRotationDeviation: 15
+  MaxRotationDeviation: 30
   angle: 0
 --- !u!195 &7099358511522246797
 NavMeshAgent:

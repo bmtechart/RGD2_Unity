@@ -118,7 +118,8 @@ public class AIMovement : AIBehaviour
 
         if (Vector3.Distance(followTarget.transform.position, transform.position) > pathFailureThreshold) return Node.Status.FAILURE;
 
-        Vector3 relativePos = followTarget.transform.position - transform.position;
+
+        Vector3 relativePos = new Vector3(followTarget.transform.position.x, 0.0f, followTarget.transform.position.z) - new Vector3(transform.position.x, 0.0f, transform.position.z);
 
         angle = Vector3.Angle(relativePos, transform.forward);
 
@@ -129,12 +130,10 @@ public class AIMovement : AIBehaviour
 
             if (angle < MaxRotationDeviation)
             {
-                Debug.Log("facing player!");
                 return Node.Status.SUCCESS;
             }
             return Node.Status.RUNNING;
         }
-        Debug.Log("facing player!");
         return Node.Status.SUCCESS;
     }
 
