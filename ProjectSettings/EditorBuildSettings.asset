@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/_Core/Scenes/Blockout_Level 1.unity
     guid: b7436da98a534c64797ade544afd3927
   - enabled: 1
-    path: Assets/_Core/Scenes/Blockout_Level 2.unity
+    path: Assets/_Core/Scenes/Blockout_Level 2(OLD).unity
     guid: 308579a2044189b44916270bc3d24b89
   - enabled: 1
-    path: Assets/_Core/Scenes/Blockout_Level 3.unity
+    path: Assets/_Core/Scenes/Blockout_Level 2.unity
     guid: b028f37a18d70b341b38b805fbaaca6b
   - enabled: 1
     path: Assets/_Core/Scenes/Blockout_Level 4.unity
